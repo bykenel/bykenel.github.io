@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Hispanidad!</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/jquery.min.js"></script>
+	<script src="./js/quiz-plugin.js"></script>
+    <script>
+        $(function(){
+            let options = {message: "Você acertou "
+                , questions: [{id:1
+                    , question: "¿Qué se celebra el Día de la Hispanidad?"
+                    , items :["Celebra el Día de la Independencia de España.", "Celebra a todos los Pueblos que hablan Español, a todos los hablantes del idioma.", "Celebra el legado americano en España."]
+                    , correct: 1
+                }
+                , {id:2
+                    , question: "¿Qué día se celebra el Día de la Hispanidad?"
+                    , items :["Día 20 de octubre.", "Día 12 de diciembre.", "Día 12 de octubre."]
+                    , correct: 2
+                }
+                , {id:3
+                    , question: "¿Qué otros nombres se le da al Día de la Hispanidad?"
+                    , items :["Lá Hispanidad, Día del descubrimiento, Día de los niños...", "Fiesta Nacional de españa, Día del descubrimiento, Día panamericano...", "La Tomatina, La Tomatina, El Cascamorras..."]
+                    , correct: 1
+                }
+                , {id:4
+                    , question: "¿Por qué se celebra en el 12 de octubre?"
+                    , items :["Porque el 12 de octubre es una fecha important que se conmemora el encuentro de dos mundos, Europa y América.", "Porque el 12 de octubre está totalmente interconectado con el día de los niños.", "Porque el 12 de octubre es el día en que los portugueses llegan a América."]
+                    , correct: 0
+                }]
+            }
+            $(".quiz").quiz(options);
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Dia de La Hispanidad</h1>
+    <h2>¡Bienvenido a nuestro quiz!<br/>
+        Utilice el video como base y pruebe sus conocimientos.</h2>
+    
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2jvFEY0uDo8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    <h2>¡Buena suerte!</h2>
+
+    <div class="quiz"></div>
+
+    <h2>Gracias por estar aqui! ;)</h2>
+</body>
+</html>
