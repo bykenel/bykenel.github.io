@@ -13,6 +13,7 @@ function value(money) {
             c100++;
             money -= 100;
         }
+        
         for(;money >= 50;) {
             c50++;
             money -= 50;
