@@ -1,4 +1,4 @@
-numberPrime(6);
+numberPrime (4)
 
 function numberPrime(max) {
     for (let i = 2; i <= max; i++){
@@ -9,6 +9,10 @@ function numberPrime(max) {
                 break;
             }
         }
-        if (prime) console.log(i);
+        if (prime) {
+            let primeList = new Array();
+            primeList.push(i);
+            console.log(primeList)
+        }
     }
 }
