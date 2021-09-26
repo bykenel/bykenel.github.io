@@ -9,14 +9,15 @@
 <body>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 1</h1>
+    <h4>Soma de dois números:</h4>
 
     <input type="number" name="num1" id="num1">
     <input type="number" name="num2" id="num2">
-    <input type="button" value="Somar" onclick="somar()">
+    <input type="button" value="Somar" onclick="sum()">
     <div id="res"></div>
 
     <script>
-        function somar() {
+        function sum() {
             var nu1 = window.document.getElementById('num1');
             var nu2 = window.document.getElementById('num2');
             var res = window.document.getElementById('res');
