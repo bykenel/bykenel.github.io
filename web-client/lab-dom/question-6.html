@@ -9,21 +9,19 @@
 <body>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 6</h1>
+    <h4>Fahrenheit para Celsius:</h4>
 
     <input type="number" name="num1" id="num1">
-    <input type="number" name="num2" id="num2">
-    <input type="button" value="Somar" onclick="somar()">
+    <input type="button" value="Converter" onclick="converter()">
     <div id="res"></div>
 
     <script>
-        function somar() {
+        function converter() {
             var nu1 = window.document.getElementById('num1');
-            var nu2 = window.document.getElementById('num2');
             var res = window.document.getElementById('res');
-            var n1 = Number(nu1.value);
-            var n2 = Number(nu2.value);
-            var s = n1 + n2;
-            res.innerHTML = `A soma é igual a ${s}`;
+            var f = Number(nu1.value);
+            var c = (f - 32) * 5 / 9;
+            res.innerHTML = `A temperatura ${f} em Fahrenheit equivale a ${c} em Celsius`;
         }
     </script>
 </body>

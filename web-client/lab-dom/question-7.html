@@ -9,21 +9,25 @@
 <body>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 7</h1>
+    <h4>Média final a partir de três notas:</h4>
 
     <input type="number" name="num1" id="num1">
     <input type="number" name="num2" id="num2">
-    <input type="button" value="Somar" onclick="somar()">
+    <input type="number" name="num3" id="num3">
+    <input type="button" value="Calcular" onclick="media()">
     <div id="res"></div>
 
     <script>
-        function somar() {
+        function media() {
             var nu1 = window.document.getElementById('num1');
             var nu2 = window.document.getElementById('num2');
+            var nu3 = window.document.getElementById('num3');
             var res = window.document.getElementById('res');
             var n1 = Number(nu1.value);
             var n2 = Number(nu2.value);
-            var s = n1 + n2;
-            res.innerHTML = `A soma é igual a ${s}`;
+            var n3 = Number(nu3.value);
+            var mf = (n1 * 2 + n2 * 3 + n3 * 5) / 10;
+            res.innerHTML = `A média final é igual a ${mf}`;
         }
     </script>
 </body>

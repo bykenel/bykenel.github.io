@@ -9,21 +9,24 @@
 <body>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 5</h1>
+    <h4>Cálculo de reajuste do salário:</h4>
+    <h5>(salário | porcentagem)</h5>
 
     <input type="number" name="num1" id="num1">
     <input type="number" name="num2" id="num2">
-    <input type="button" value="Calcular" onclick="somar()">
+    <input type="button" value="Calcular" onclick="readjust()">
     <div id="res"></div>
 
     <script>
-        function somar() {
-            var nu1 = window.document.getElementById('num1');
-            var nu2 = window.document.getElementById('num2');
+        function readjust() {
+            var sal = window.document.getElementById('num1');
+            var por = window.document.getElementById('num2');
             var res = window.document.getElementById('res');
-            var n1 = Number(nu1.value);
-            var n2 = Number(nu2.value);
-            var s = n1 + n2;
-            res.innerHTML = `A soma é igual a ${s}`;
+            var s = Number(sal.value);
+            var p = Number(por.value);
+            p = p / 100;
+            var ns = (s * p) + s;
+            res.innerHTML = `O novo salário é igual a ${ns}`;
         }
     </script>
 </body>
