@@ -11,7 +11,7 @@
     <h1>Questão 6</h1>
     <h4>Fahrenheit para Celsius:</h4>
 
-    <input type="number" name="num1" id="num1">
+    <input type="number" name="num1" id="num1" placeholder="Temperatura em F°">
     <input type="button" value="Converter" onclick="converter()">
     <div id="res"></div>
 
@@ -21,7 +21,7 @@
             var res = window.document.getElementById('res');
             var f = Number(nu1.value);
             var c = (f - 32) * 5 / 9;
-            res.innerHTML = `A temperatura ${f} em Fahrenheit equivale a ${c} em Celsius`;
+            res.innerHTML = `A temperatura ${f} em F° equivale a ${c} em C°`;
         }
     </script>
 </body>

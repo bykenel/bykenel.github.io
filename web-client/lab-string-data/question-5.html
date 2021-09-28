@@ -11,8 +11,23 @@
     <h1>Questão 5</h1>
     <h4>Procurar e substituir:</h4>
 
-    <script>
+    <h5><p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></h5>
 
+    <form>
+        <input type="text" name="text" value="" placeholder="Procurar no texto"/>
+        <input type="text" name="text2" value="" placeholder="Palavra"/>
+        <input type="button" value="Substituir" onclick="changeText()"/>
+    </form>
+
+    <script>
+        function changeText() {
+            let text = "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            let search = window.document.getElementsByName("text");
+            let replace = window.document.getElementsByName("text2");
+            let s = search.item(0).value;
+            let r = replace.item(0).value;
+            document.body.innerHTML += `</br> ${text.replace(s, r)} </br>`;
+        }
     </script>
 </body>
 </html>
