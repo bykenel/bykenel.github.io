@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 5</title>
+</head>
+<body>
+    <h1>Laboratório de JavaScript 3 - DOM</h1>
+    <h1>Questão 5</h1>
+    <h4>Cálculo de reajuste do salário:</h4>
+    <h5>(salário | porcentagem)</h5>
+
+    <input type="number" name="num1" id="num1">
+    <input type="number" name="num2" id="num2">
+    <input type="button" value="Calcular" onclick="readjust()">
+    <div id="res"></div>
+
+    <script>
+        function readjust() {
+            var sal = window.document.getElementById('num1');
+            var por = window.document.getElementById('num2');
+            var res = window.document.getElementById('res');
+            var s = Number(sal.value);
+            var p = Number(por.value);
+            p = p / 100;
+            var ns = (s * p) + s;
+            res.innerHTML = `O novo salário é igual a ${ns}`;
+        }
+    </script>
+</body>
+</html>
