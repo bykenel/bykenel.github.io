@@ -7,28 +7,27 @@
     <title>Questão 3</title>
 </head>
 <body>
-    <h1>Laboratório de JavaScript 3 - DOM</h1>
+    <h1>Laboratório de JavaScript 4 - Strings e Datas</h1>
     <h1>Questão 3</h1>
-    <h4>Análise de um número primo:</h4>
+    <h4>Separação de palavras e contagem de repetição:</h4>
 
-    <input type="number" name="num1" id="num1">
-    <input type="button" value="Verificar" onclick="prime()">
-    <div id="res"></div>
+    <form>
+        <input type="text" name="text" value=""/>
+        <input type="button" value="Verificar" onclick="words()"/>
+    </form>
 
     <script>
-        function prime() {
-            var nu1 = window.document.getElementById('num1');
-            var res = window.document.getElementById('res');
-            var n1 = Number(nu1.value);
-            var div = 0;
-            for (var i = 1; i <= n1; i++) {
-                if (n1 % i == 0)
-                div++;
-            }
-            if (div == 2) {
-                res.innerHTML= `${n1} é primo`;
-            } else {
-                res.innerHTML= `${n1} não é primo`;
+        function words() {
+            let t = document.getElementsByName("text");
+            let bagOfWord = t.item(0).value.split(" ");
+            for (let i = 0; i < bagOfWord.length; i++) {
+                let count = 0;
+                let pos = bagOfWord.indexOf(bagOfWord[i]);
+                while (pos != -1)  {
+                    count++;
+                    pos = bagOfWord.indexOf(bagOfWord[i], pos + 1);
+                }
+                document.body.innerHTML += `</br> Palavra: ${bagOfWord[i]} </br> Ocorrência(s): ${count} </br>`;
             }
         }
     </script>
