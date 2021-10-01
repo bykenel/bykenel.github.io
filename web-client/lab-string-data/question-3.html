@@ -18,16 +18,26 @@
 
     <script>
         function words() {
-            let t = document.getElementsByName("text");
-            let bagOfWord = t.item(0).value.split(" ");
-            for (let i = 0; i < bagOfWord.length; i++) {
-                let count = 0;
-                let pos = bagOfWord.indexOf(bagOfWord[i]);
-                while (pos != -1)  {
-                    count++;
-                    pos = bagOfWord.indexOf(bagOfWord[i], pos + 1);
+            let text = document.getElementsByName("text").value;
+            let words = text.split(" ");
+            let cleanWords = [];
+            let bagOfWords = [];
+            
+            words.forEach(function (word) {
+                word = word.toLowerCase();
+                let ultChar = word.charAt(word.lenght -1);
+                if (",.!?';".indexOf(ultChar) != -1) {
+                    word = word.substr(0, word.lenght-2);
                 }
-                document.body.innerHTML += `</br> Palavra: ${bagOfWord[i]} </br> Ocorrência(s): ${count} </br>`;
+                cleanWords.push(word); }
+            );
+
+            for(let i = 0; i < words.length; i++) {
+                for(let j = 0; j < bagOfWords.length; j++) {
+                    if(bagOfWords[j].termo == words[i]) {
+                        bagOfWords[j].frequencia++;
+                    }
+                }
             }
         }
     </script>
