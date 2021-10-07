@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Denzel Vianna de Farias</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./index-style/style.css" type="text/css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
         </script>
@@ -17,64 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
         </script>
-
     <script src="https://kit.fontawesome.com/f0e17cbf2f.js" crossorigin="anonymous"></script>
-    <style>
-        p {
-            font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-
-        .foto-perfil {
-            height: 100%;
-            max-width: auto;
-            border-radius: 50%;
-        }
-
-        .titulosBrancos {
-            text-decoration: underline;
-            text-underline-position: under;
-            padding-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: #ffffff
-        }
-
-
-        .paragrafoCinzas {
-            color: #828282 !important;
-        }
-
-        .destaqueRoxos {
-            color: #6323ac !important;
-            font-weight: bold;
-        }
-
-        .destaqueBrancos {
-            color: #ffffff !important;
-            font-weight: bold;
-        }
-
-
-        .jumbotron {
-            margin-bottom: 0px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        p {
-            color: black !important;
-        }
-
-        .corPrimaria {
-            background-color: #000000;
-        }
-
-        .itemMenu {
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
@@ -82,7 +28,7 @@
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:#101010">
         <a class="navbar-brand" href="#" style=color:#ffffff>Denzel Vianna de Farias</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
-            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#3c3c3c">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -107,24 +53,27 @@
     <!-- PERFIL -->
     <section class="jumbotron text-center corPrimaria">
         <div class="container">
-            <img src="img/perfil.jpg" class="foto-perfil" alt="Responsive image">
+            <img src="./index-style/img/perfil.jpg" class="foto-perfil" alt="Responsive image">
             <h1 class="jumbotron-heading" style="color:#ffffff;text-transform: uppercase;">Denzel Vianna de Farias</h1>
             <p class="lead" style="color:#6323ac !important;">Aluno
             </p>
             <p>
                 <a href="#contato" class="btn btn-dark my-0">Contato</a>
             </p>
-
+            <a href="https://github.com/Kenel1"><i style="color:white" class="fab fa-github"></i></a>
+            <a href="https://discordapp.com/users/476545927457406988"><i style="color:white" class="fab fa-discord"></i></a>
+            <a href="https://twitter.com/8kenel"><i style="color:white" class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/by_kenel/"><i style="color:white" class="fab fa-instagram"></i></a>
         </div>
     </section>
     
     <!-- SOBRE MIM -->
-        <section class="jumbotron text-center corPrimaria" id="sobre-mim">
+    <section class="jumbotron text-center corPrimaria" id="sobre-mim">
             <div class="container">
                 <h2 class="jumbotron-heading titulosBrancos">Sobre mim</h2>
-                <p class="lead paragrafoCinzas">Hey! Sou aluno do CEFET/RJ. Tenho 17 anos e atualmente estou cursando
+                <p class="lead paragrafoCinzas">Hey! Me chamam de <i>Kenel</i> por aqui. Sou aluno do CEFET/RJ, tenho 17 anos e atualmente estou cursando
                 o ensino médio integrado ao curso técnico de informática. Sou apaixonado por programação e design, principalmente se relacionado ao desenvolvimento
-                de jogos.
+                de jogos. Passo meu tempo estudando, jogando e se perdendo neste universo binário tão vasto! 🚀
                     </p>
                 <p class="lead destaqueRoxos">𝖒𝖊𝖒𝖊𝖓𝖙𝖔 𝖒𝖔𝖗𝖎...
                     </p>
@@ -132,16 +81,18 @@
     </section>
     
     <!-- PORTFÓLIO -->
-        <div class="corPrimaria" id="portfólio">
+    <div class="corPrimaria" id="portfólio">
         <div class="container">
             <h2 class="text-center jumbotron-heading titulosBrancos">Portfólio</h2>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card mb-4 box-shadow itemMenu" style="background-color:#101010">
-                        <img class="card-img-top"
+                        <!-- img
+                            <img class="card-img-top"
                             data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                            alt="Thumbnail [100%x225]" src="./img/github-banner.jpg" data-holder-rendered="true"
+                            alt="Thumbnail [100%x225]" src="###" data-holder-rendered="true"
                             style="height: 225px; width: 100%;max-width: 100%; display: block;">
+                        -->
                         <div class="card-body">
                             <p class="lead destaqueBrancos">Repositório Institucional
                             </p>
@@ -152,7 +103,7 @@
                             </ul>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="https://github.com/Kenel1/Kenel1.github.io"><button type="button" class="btn btn-sm btn-outline-success">Ver Portfólio</button></a>
+                                    <a href="https://github.com/Kenel1/Kenel1.github.io/tree/master/cefet-rj"><button type="button" class="btn btn-sm btn-outline-success">Ver Portfólio</button></a>
                                 </div>
                                 <small class="text-muted">GitHub Pages</small>
                             </div>
@@ -173,6 +124,12 @@
             </div>
         </div>
     </section>
+
+    <!-- RODAPÉ -->
+    <footer class="text-center" style="background-color:#101010;padding:0px; margin:0px">
+        <p style="margin:0px;padding-top:15px;font-weight:bold;padding-bottom:15px;color:white !important">Obrigado pela visita!
+        </p>
+    </footer>
 </body>
 
 </html>
