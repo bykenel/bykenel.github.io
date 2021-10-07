@@ -36,20 +36,22 @@
             padding-bottom: 20px;
             text-transform: uppercase;
             font-weight: 700;
-            color: white;
+            color: #ffffff
         }
 
-        .titulosRoxos {
-            text-decoration: underline;
-            text-underline-position: under;
-            padding-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: #8818bc
+
+        .paragrafoCinzas {
+            color: #828282 !important;
         }
 
-        .paragrafoRoxos {
-            color: #8818bc !important;
+        .destaqueRoxos {
+            color: #6323ac !important;
+            font-weight: bold;
+        }
+
+        .destaqueBrancos {
+            color: #ffffff !important;
+            font-weight: bold;
         }
 
 
@@ -66,11 +68,7 @@
         }
 
         .corPrimaria {
-            background-color: #8818bc;
-        }
-
-        .sobre-mim {
-            background-color: #f8f8f8;
+            background-color: #000000;
         }
 
         .itemMenu {
@@ -81,8 +79,8 @@
 
 <body>
     <!-- NAVEGAÇÃO -->
-    <nav class="navbar navbar-expand-md navbar-light" style="background-color:#343a40">
-        <a class="navbar-brand" href="#" style=color:white>Denzel Vianna de Farias</a>
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color:#101010">
+        <a class="navbar-brand" href="#" style=color:#ffffff>Denzel Vianna de Farias</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
             aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -94,10 +92,10 @@
             </ul>
             <ul class="navbar-nav">
                 <li>
-                    <a href="#projetos" class="nav-link" style=color:white> Projetos</a>
+                    <a href="#sobre-mim" class="nav-link" style=color:white>Sobre mim</a>
                 </li>
                 <li>
-                    <a href="#sobre-mim" class="nav-link" style=color:white>Sobre mim</a>
+                    <a href="#portfólio" class="nav-link" style=color:white>Portfólio</a>
                 </li>
                 <li>
                     <a href="#contato" class="nav-link" style=color:white>Contato</a>
@@ -110,40 +108,53 @@
     <section class="jumbotron text-center corPrimaria">
         <div class="container">
             <img src="img/perfil.jpg" class="foto-perfil" alt="Responsive image">
-            <h1 class="jumbotron-heading" style="color:white;text-transform: uppercase;">Denzel Vianna de Farias</h1>
-            <p class="lead" style="color:white !important;">Aluno
+            <h1 class="jumbotron-heading" style="color:#ffffff;text-transform: uppercase;">Denzel Vianna de Farias</h1>
+            <p class="lead" style="color:#6323ac !important;">Aluno
             </p>
             <p>
-                <a href="#contato" class="btn btn-dark my-2">Contato</a>
+                <a href="#contato" class="btn btn-dark my-0">Contato</a>
             </p>
 
         </div>
     </section>
     
-    <!-- PROJETOS -->
-    <div class="album py-5 bg-light " id="projetos">
+    <!-- SOBRE MIM -->
+        <section class="jumbotron text-center corPrimaria" id="sobre-mim">
+            <div class="container">
+                <h2 class="jumbotron-heading titulosBrancos">Sobre mim</h2>
+                <p class="lead paragrafoCinzas">Hey! Sou aluno do CEFET/RJ. Tenho 17 anos e atualmente estou cursando
+                o ensino médio integrado ao curso técnico de informática. Sou apaixonado por programação e design, principalmente se relacionado ao desenvolvimento
+                de jogos.
+                    </p>
+                <p class="lead destaqueRoxos">𝖒𝖊𝖒𝖊𝖓𝖙𝖔 𝖒𝖔𝖗𝖎...
+                    </p>
+            </div>
+    </section>
+    
+    <!-- PORTFÓLIO -->
+        <div class="corPrimaria" id="portfólio">
         <div class="container">
-            <h2 class="text-center jumbotron-heading titulosRoxos">Projetos</h2>
+            <h2 class="text-center jumbotron-heading titulosBrancos">Portfólio</h2>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card mb-4 box-shadow itemMenu" style="background-color:#101010">
                         <img class="card-img-top"
                             data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                            alt="Thumbnail [100%x225]" src="img/projeto-spanish.jpg" data-holder-rendered="true"
+                            alt="Thumbnail [100%x225]" src="./img/github-banner.jpg" data-holder-rendered="true"
                             style="height: 225px; width: 100%;max-width: 100%; display: block;">
                         <div class="card-body">
-                            <p class="card-text">Site de Cultura Espanhola (em desenvolvimento)
+                            <p class="lead destaqueBrancos">Repositório Institucional
                             </p>
                             <ul>
                                 <li>HTML</li>
                                 <li>CSS</li>
-                                <li>Javascript</li>
+                                <li>JavaScript</li>
                             </ul>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="http://kenel1.github.io/design-web/web-spanish/index.html"><button type="button" class="btn btn-sm btn-outline-success">Ver Projeto</button></a>
+                                    <a href="https://github.com/Kenel1/Kenel1.github.io"><button type="button" class="btn btn-sm btn-outline-success">Ver Portfólio</button></a>
                                 </div>
-                                <small class="text-muted">Projeto Web</small>
+                                <small class="text-muted">GitHub Pages</small>
                             </div>
                         </div>
                     </div>
@@ -152,24 +163,13 @@
         </div>
     </div>
 
-    <!-- SOBRE MIM -->
-    <section class="jumbotron text-center sobre-mim" id="sobre-mim">
-        <div class="container">
-            <h2 class="jumbotron-heading titulosRoxos">Sobre mim</h2>
-            <p class="lead paragrafoRoxos">Olá! Meu nome é Denzel e sou aluno do CEFET/RJ-NF. Tenho 17 anos e atualmente estou cursando
-            o ensino médio integrado ao curso técnico de informática. Sou apaixonado por programação e design, principalmente se relacionado ao desenvolvimento
-            de jogos. A minha jornada neste universo binário está apenas no começo! ;)
-            </p>
-        </div>
-    </section>
-
     <!-- CONTATO -->
     <section Id="contato" class="corPrimaria">
-        <div class="corPrimaria">
+        <div class="contato">
             <div class="container-fluid">
                 <h3 style="padding-top:90px;" class="text-center titulosBrancos">Contato</h3>
                 <h4 style="padding-bottom:90px;margin-bottom: 0px;color:white;" class="text-center"><a
-                        href="mailto:denzel.farias@aluno.cefet-rj.br">denzel.farias@aluno.cefet-rj.br👈</a></h4>
+                        href="mailto:denzel.farias@aluno.cefet-rj.br">denzel.farias@aluno.cefet-rj.br</a></h4>
             </div>
         </div>
     </section>
