@@ -7,6 +7,7 @@
     <title>Questão 3</title>
 </head>
 <body>
+    <script src="./script.js"></script>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 3</h1>
     <h4>Análise de um número primo:</h4>
@@ -14,23 +15,5 @@
     <input type="number" name="num1" id="num1" placeholder="Insira um número">
     <input type="button" value="Verificar" onclick="prime()">
     <div id="res"></div>
-
-    <script>
-        function prime() {
-            var nu1 = window.document.getElementById('num1');
-            var res = window.document.getElementById('res');
-            var n1 = Number(nu1.value);
-            var div = 0;
-            for (var i = 1; i <= n1; i++) {
-                if (n1 % i == 0)
-                div++;
-            }
-            if (div == 2) {
-                res.innerHTML= `${n1} é primo`;
-            } else {
-                res.innerHTML= `${n1} não é primo`;
-            }
-        }
-    </script>
 </body>
 </html>

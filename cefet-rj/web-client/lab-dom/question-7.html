@@ -7,6 +7,7 @@
     <title>Questão 7</title>
 </head>
 <body>
+    <script src="./script.js"></script>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 7</h1>
     <h4>Média final a partir de três notas:</h4>
@@ -16,19 +17,5 @@
     <input type="number" name="num3" id="num3" placeholder="3° Nota">
     <input type="button" value="Calcular" onclick="media()">
     <div id="res"></div>
-
-    <script>
-        function media() {
-            var nu1 = window.document.getElementById('num1');
-            var nu2 = window.document.getElementById('num2');
-            var nu3 = window.document.getElementById('num3');
-            var res = window.document.getElementById('res');
-            var n1 = Number(nu1.value);
-            var n2 = Number(nu2.value);
-            var n3 = Number(nu3.value);
-            var mf = (n1 * 2 + n2 * 3 + n3 * 5) / 10;
-            res.innerHTML = `A média final é igual a ${mf}`;
-        }
-    </script>
 </body>
 </html>

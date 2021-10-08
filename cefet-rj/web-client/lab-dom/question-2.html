@@ -7,6 +7,7 @@
     <title>Questão 2</title>
 </head>
 <body>
+    <script src="./script.js"></script>
     <h1>Laboratório de JavaScript 3 - DOM</h1>
     <h1>Questão 2</h1>
     <h4>Comparação de dois números:</h4>
@@ -15,24 +16,5 @@
     <input type="number" name="num2" id="num2" placeholder="Insira um número">
     <input type="button" value="Verificar" onclick= "comparison()">
     <div id="res"></div>
-
-    <script>
-        function comparison() {
-            var nu1 = window.document.getElementById('num1');
-            var nu2 = window.document.getElementById('num2');
-            var res = window.document.getElementById('res');
-            var n1 = Number(nu1.value);
-            var n2 = Number(nu2.value);
-            if (n1 > n2) {
-                res.innerHTML = `${n1} é maior do que ${n2}`;
-            } else {
-                    if (n2 > n1) {
-                        res.innerHTML = `${n1} é menor do que ${n2}`; 
-                    } else {
-                        res.innerHTML = `Os números são iguais`; 
-                    }
-            }
-        }
-    </script>
 </body>
 </html>
