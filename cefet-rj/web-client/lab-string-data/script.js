@@ -1,0 +1,19 @@
+//QUESTÃO 1
+
+//QUESTÃO 2
+
+//QUESTÃO 3
+
+//QUESTÃO 4
+
+//QUESTÃO 5
+
+//QUESTÃO 6
+
+//QUESTÃO 7
+
+//QUESTÃO 8
+
+//QUESTÃO 9
+
+//QUESTÃO 10
