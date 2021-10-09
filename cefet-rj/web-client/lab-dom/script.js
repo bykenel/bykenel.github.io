@@ -1,9 +1,9 @@
 //QUESTÃO 1
 function sum() {
-    let n1 = window.document.getElementById('num1').value;
-    let n2 = window.document.getElementById('num2').value;
+    let n1 = Number(window.document.getElementById('num1').value);
+    let n2 = Number(window.document.getElementById('num2').value);
     let res = window.document.getElementById('res');
-    let s = n1 + n2;
+    let s = (n1 + n2);
     res.innerHTML = `A soma é igual a ${s}`;
 }
 
@@ -50,8 +50,8 @@ function hypot() {
 
 //QUESTÃO 5
 function readjust() {
-    let s = window.document.getElementById('num1').value;
-    let p = window.document.getElementById('num2').value;
+    let s = Number(window.document.getElementById('num1').value);
+    let p = Number(window.document.getElementById('num2').value);
     let res = window.document.getElementById('res');
     p = p / 100;
     let ns = (s * p) + s;
