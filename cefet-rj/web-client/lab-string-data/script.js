@@ -98,7 +98,7 @@ option4.addEventListener('click',() => {
             maxHelper[j] = max[i]
            i = i+Math.max(...hand)
         }
-        output.innerHTML='A(s) palavra(s) com maior ocorrência foi(ram): '+ maxHelper+ ' com '+ Math.max(...hand)+' ocorrências'
+        output.innerHTML='A palavra com maior ocorrência foi: '+ maxHelper+ ' com '+ Math.max(...hand)+' ocorrência(s)'
     }
 });
 
