@@ -3,7 +3,7 @@ function sum() {
     let n1 = Number(window.document.getElementById('num1').value);
     let n2 = Number(window.document.getElementById('num2').value);
     let res = window.document.getElementById('res');
-    let s = (n1 + n2);
+    let s = n1 + n2;
     res.innerHTML = `A soma é igual a ${s}`;
 }
 
