@@ -191,6 +191,27 @@ option9.addEventListener('click',() => {
     partialCamoRemoval()
 });
 
+//QUESTÃO 10
+option10.addEventListener('click',() => {
+    old.type='text';
+    newC.type='text';
+    oldLabel.innerHTML = 'Primeira palavra:'
+    newLabel.innerHTML = 'Segunda palavra'
+    let i=0 
+    if(old.type=='text' && old.style.visibility=="visible" && old.value != ''){
+        let str = middle.value.split("")
+        let result = str
+        auxL = old.value.split("")
+        auxR = newC.value.split("")
+        for(i=0;i<old.value.length;i++){
+        result = enigma(auxL[i],auxR[i],result) 
+        }
+        output.innerHTML = result.join("")
+    }
+    camoMiddleRemoval()
+    camoRemoval()
+});
+
 //FUNÇÕES AUXILIARES
 option0.addEventListener('click',() => {
     camo();
