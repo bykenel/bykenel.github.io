@@ -1,4 +1,10 @@
 //QUESTÃO 1
+function reverseTxt() {
+    let text = window.document.getElementById("txt").value;
+    splitTxt = text.toString().split("");
+    normalTxt = splitTxt.reverse().join("");
+    res.innerHTML = `${normalTxt}`;
+}
 
 //QUESTÃO 2
 
