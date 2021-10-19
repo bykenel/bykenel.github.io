@@ -9,8 +9,6 @@ window.onload = function () {
         console.log(receita);
     })
     */
-
-
 }
 
 function montaDiv(receita) {
@@ -42,5 +40,5 @@ function montaDiv(receita) {
         <ul>
             <li>1kg de cebola</li>
         </ul>
-    </div>
-    */
+</div>
+*/
