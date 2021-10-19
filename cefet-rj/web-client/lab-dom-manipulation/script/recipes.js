@@ -1,4 +1,3 @@
-
 var receitasList = [{"id":1
 ,"nome":"Arroz de lentilhas com cebolas fritas"
 ,"descricao":"Receita \u00e9 muito f\u00e1cil de fazer e ainda traz sorte para come\u00e7ar o ano"

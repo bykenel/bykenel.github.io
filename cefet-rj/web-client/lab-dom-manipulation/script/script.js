@@ -4,9 +4,11 @@ window.onload = function () {
     for (receita of receitasList) {
         body.appendChild(montaDiv(receita));
     }
+    /*
     receitasList.forEach(function (receita){
         console.log(receita);
     })
+    */
 
 
 }
@@ -27,7 +29,7 @@ function montaDiv(receita) {
     divReceita.appendChild(foto);
     return divReceita;
 }
-
+/*
 <div class="receita">
         <h3>(receita.nome) </h3>
         <p>(receita.descricao)</p>
@@ -40,4 +42,5 @@ function montaDiv(receita) {
         <ul>
             <li>1kg de cebola</li>
         </ul>
-</div>
+    </div>
+    */
