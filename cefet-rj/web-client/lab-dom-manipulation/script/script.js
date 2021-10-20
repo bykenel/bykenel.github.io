@@ -1,46 +1,34 @@
 window.onload = function () {
-    let body = document.getElementsByTagName("body")[0];
-    console.log(body);
-    for (receita of receitasList) {
-        body.appendChild(montaDiv(receita));
-    }
-    /*
-    receitasList.forEach(function (receita){
-        console.log(receita);
-    })
-    */
+    let aux = '';
+     
+    receitas.forEach(recipe => {       
+        let preparoAux = '';
+        let ingredientesAux = '';
 
+        recipe.preparo.forEach((preparo) =>{
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(preparo));
+            preparoAux += li.outerHTML;
+        })
+        recipe.ingredientes.forEach(function(ingrediente){
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(ingrediente));
+            ingredientesAux += li.outerHTML;
+        })
+    
+      aux += `
+      <div class = "receita">
+      <div class = "mainDescription">
+        <h1>${recipe.nome}</h1>
+        <img src ="${recipe.foto}">
+        <h4>${recipe.descricao}</h4>
+        </div>
+        <div class="DIY">
+        <h2>Ingredientes: </h2> <ul>${ingredientesAux}</ul>
+        <h2>Preparo: </h2> <ol>${preparoAux}</ol>
+        </div>
+        </div>`;
 
+    });
+    document.querySelector('body').innerHTML = aux;
 }
-
-function montaDiv(receita) {
-    let divReceita = document.createElement("div");
-    divReceita.classList.add("receita");
-    let titulo = document.createElement("h3");
-    let tituloText = document.createTextNode(receita.nome);
-    let descricao = document.createElement("p");
-    let descricaoText = document.createTextNode(receita.descricao);
-    let foto = document.createElement("img");
-    foto.src = receita.foto;
-    titulo.appendChild(tituloText);
-    descricao.appendChild(descricaoText);
-    divReceita.appendChild(titulo);
-    divReceita.appendChild(descricao);
-    divReceita.appendChild(foto);
-    return divReceita;
-}
-/*
-<div class="receita">
-        <h3>(receita.nome) </h3>
-        <p>(receita.descricao)</p>
-        <img src="<<receita.foto>>" alt="receita.foto">
-        <h4>receita.preparo (array a ser iterado)</h4>
-        <ol>
-            <li></li>
-        </ol>
-        <h4>receita.ingredientes (array que precisa ser iterado)</h4>
-        <ul>
-            <li>1kg de cebola</li>
-        </ul>
-    </div>
-*/

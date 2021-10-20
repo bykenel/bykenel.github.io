@@ -1,0 +1,52 @@
+body{
+    background: #4f4f4f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: "Times New Roman", Georgia, Serif;}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Georgia";
+  letter-spacing: 1px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.receita{
+    display: inline-flex;
+    background: #242424;
+    border: .1em solid #000000;
+    margin-bottom: 1em;
+}
+
+.mainDescription{
+    flex-basis: 50%;
+    margin: 1em;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    height: auto; 
+    width: 100%; 
+    display: block;
+    align-items: center;
+    border: .2em solid #000000;
+}
+
+.DIY{
+    margin: 3em;
+}
+
+@media screen and (max-width:900px){
+	.receita{
+		flex-direction: column;
+		
+	}
+  }
+
+.receita:last-child{
+      margin-bottom: 0;
+}
