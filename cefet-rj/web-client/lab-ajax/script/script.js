@@ -43,11 +43,7 @@ http.get('https://rafaelescalfoni.github.io/desenv_web/filmes.json', function(st
                     <div class="imageContainer">
                     <img src=${data.figura}>
                     </div>
-
-                    <div class="reviews">
-                    ${opinioesAux}
-                    </div>
-
+                    
                     <div class="description">
                     <h1>${data.titulo}</h1>
                     ${showRating.outerHTML}
