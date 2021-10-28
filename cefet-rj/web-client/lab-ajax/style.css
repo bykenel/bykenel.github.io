@@ -9,7 +9,7 @@ img {
 }
 
 body {
-  background: #141414;
+  background: #06020a;
   color: white;
 }
 
@@ -29,32 +29,9 @@ body {
   position: relative;
   width: 50vh;
   height: 50vh;
-  background-color: #202024;
+  background-color: #1d0b31;
   border-radius: 5%;
   overflow: hidden;
-}
-
-.movie::before {
-  z-index: 6;
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: black;
-  clip-path: circle(8vh at 100% -5%);
-  transition: 0.5s ease-in-out;
-}
-
-.movie.green::before {
-  background-color: #009C4C;
-}
-
-.movie.red::before {
-  background-color: #E50914;
-}
-
-.movie.yellow::before {
-  background-color: #F7C727;
 }
 
 .movie:hover:before {
@@ -72,12 +49,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.rating {
-  width: 50%;
-  display: flex;
-
-}
-
 .movie:hover:after {
   position: absolute;
   top: -10%; left: 100%;
@@ -85,7 +56,7 @@ body {
 }
 
 .imageContainer {
-  position: absolute;
+  position: relative;
   top: 0%;
   transform: translateY(0%);
   width: 100%;
@@ -105,6 +76,7 @@ body {
   top: 0%; left: 50%;
   transform: translate(-50%, 0%);
   width: 100%;
+  border-bottom: .5em solid #000000;
 }
 
 .description {
