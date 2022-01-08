@@ -1,9 +1,9 @@
 //função construtora de objetos Produto
-function Livro(id, nome, autores, estilo){
+function Livro(id, nome, autores, genero){
 	this.id = id;
 	this.nome = nome;
 	this.autores = autores;
-	this.estilo = estilo;
+	this.genero = genero;
 }
 
 function adicionarLivro(livro){}
@@ -15,20 +15,20 @@ function limpar(){
 	$("#titulo").val("");
 	$("#descricao").val("");
 	$("#autores").val("");
-	$("#estilo").val("");
+	$("#genero").val("");
 }
 		
 $(function(){
 	$("#adicionar").click(function(){
 		var tituloLivro = $("#titulo").val();
 		var autores = $("#autores").val();
-		var estilo = $("#estilo").val();
+		var genero = $("#genero").val();
 		var descricao = $("#descricao").val();
 		$("#acervo").append(
 			$("<tr>")
 				.append($("<td>").text(tituloLivro))
 				.append($("<td>").text(autores))
-				.append($("<td>").text(estilo))
+				.append($("<td>").text(genero))
 				.append($("<td>").text(descricao))
 				.append($("<td>")
 				.append($("<a>")
