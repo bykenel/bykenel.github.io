@@ -1,5 +1,5 @@
 //função construtora de objetos Produto
-function Livro(id, nome, autores, genero){
+function livro(id, nome, autores, genero){
 	this.id = id;
 	this.nome = nome;
 	this.autores = autores;
