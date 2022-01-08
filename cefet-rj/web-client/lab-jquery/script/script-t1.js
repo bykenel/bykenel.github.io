@@ -51,7 +51,7 @@ $(function(){
 			.append($("<tr>")
 			.append($("<th>").text("Título"))
 			.append($("<th>").text("Autores"))
-			.append($("<th>").text("Estilo"))
+			.append($("<th>").text("Gênero"))
 			.append($("<th>").text("Descrição"))
 		)
 	})
