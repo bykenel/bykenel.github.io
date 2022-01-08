@@ -1,9 +1,9 @@
 //função construtora de objetos Produto
-function livro(id, nome, autores, genero){
+function livro(id, nome, autores, estilo){
 	this.id = id;
 	this.nome = nome;
 	this.autores = autores;
-	this.genero = genero;
+	this.estilo = estilo;
 }
 
 function adicionarLivro(livro){}
@@ -15,20 +15,20 @@ function limpar(){
 	$("#titulo").val("");
 	$("#descricao").val("");
 	$("#autores").val("");
-	$("#genero").val("");
+	$("#estilo").val("");
 }
 		
 $(function(){
 	$("#adicionar").click(function(){
 		var tituloLivro = $("#titulo").val();
 		var autores = $("#autores").val();
-		var genero = $("#genero").val();
+		var estilo = $("#estilo").val();
 		var descricao = $("#descricao").val();
 		$("#acervo").append(
 			$("<tr>")
 				.append($("<td>").text(tituloLivro))
 				.append($("<td>").text(autores))
-				.append($("<td>").text(genero))
+				.append($("<td>").text(estilo))
 				.append($("<td>").text(descricao))
 				.append($("<td>")
 				.append($("<a>")
@@ -51,7 +51,7 @@ $(function(){
 			.append($("<tr>")
 			.append($("<th>").text("Título"))
 			.append($("<th>").text("Autores"))
-			.append($("<th>").text("Gênero"))
+			.append($("<th>").text("Estilo"))
 			.append($("<th>").text("Descrição"))
 		)
 	})
