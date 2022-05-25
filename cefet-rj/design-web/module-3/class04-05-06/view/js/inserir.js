@@ -8,18 +8,18 @@ $btnEnviar.addEventListener('click', function(event) {
         "titulo": $inputTitulo.value,
         "avaliacao": parseFloat($inputAvaliacao.value)
     };
-    fazRequisicaoAjax("POST", "../controller/filmeInserir.php", cbSucessoReq, cbErroReq, filme);
+    fazRequisicaoAjax("POST", "../controller/filmeInserir.php", cbSucessoReqInserir, cbErroReqInserir, filme);
 })
 
 //callback
-function cbErroReq(msg) {
+function cbErroReqInserir(msg) {
     document.querySelector('#msgErro').textContent = msg;
     return;
 }
 
-function cbSucessoReq(resposta) {
+function cbSucessoReqInserir(resposta) {
     document.querySelector('#msgSucesso').textContent = resposta.msgSucesso;
     setTimeout(function(){
         window.location.href = "../view/index.html";
-    }, 3500);
+    }, 2500);
 }

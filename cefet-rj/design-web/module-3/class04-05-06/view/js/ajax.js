@@ -1,6 +1,6 @@
-function fazRequisicaoAjax (metodo, url, cbSucesso, cbErro, dados = null) {
+function fazRequisicaoAjax (metodo, url, cbSucessoReq, cbErroReq, dados = null) {
     let xhr = new XMLHttpRequest();
-    xhr.open(metodo, url); xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.open(metodo, url); xhr.setRequestHeader('Content-type', 'Application/json');
     xhr.send(JSON.stringify(dados));
 
     xhr.onreadystatechange = function() {

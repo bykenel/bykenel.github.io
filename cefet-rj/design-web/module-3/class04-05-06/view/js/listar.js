@@ -1,4 +1,4 @@
-fazRequisicaoAjax("GET", "../controller/filmeListar.php", cbSucessoReq, cbErroReq);
+fazRequisicaoAjax("GET", "../controller/filmeListar.php", cbSucessoReqListar, cbErroReqListar);
 
 function montarTabela(dados) {
     for (const i in dados) {
@@ -19,19 +19,19 @@ function criarTDePendurar(noPai, info, ehHTML) {
     if (!ehHTML) {
         $td.textContent = info;
     } else {
-        $td.innerHTML = "<a href = ../controller/filmeBuscar.php?id ="+info+">[Editar]</a>";
-        $td.innerHTML += "<a href = ../controller/filmeExcluir.php?id ="+info+">[Excluir]</a>";
+        $td.innerHTML = "<a href = ../view/formBuscar.html?id="+info+">[Alterar]</a>";
+        $td.innerHTML += "<a href =# onclick='excluirFilme("+info+");'>[Excluir]</a>";
     } 
     noPai.appendChild($td);
 }
 
 //callback
-function cbErroReq(msg) {
+function cbErroReqListar(msg) {
     document.querySelector('#msgErro').textContent = msg;
     return;
 }
 
-function cbSucessoReq(resposta) {
+function cbSucessoReqListar(resposta) {
     let dados = resposta.dados;
     montarTabela(dados);
 }

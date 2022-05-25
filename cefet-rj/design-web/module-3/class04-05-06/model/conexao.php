@@ -2,6 +2,7 @@
 	$dsn = "mysql:host=localhost; dbname=cinedesweb";
 	$user = "root";
 	$pass = "";
+	
 	try {
 		$conexao = new PDO($dsn, $user, $pass);
 		$conexao -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
