@@ -1,4 +1,4 @@
-fazRequisicaoAjax("GET", "../controller/filmeListar.php", cbSucessoReqListar, cbErroReqListar);
+fazRequisicaoAjax("GET", "../controller/list.php", cbSucessoReqListar, cbErroReqListar);
 
 function montarTabela(dados) {
     for (const i in dados) {
@@ -19,7 +19,7 @@ function criarTDePendurar(noPai, info, ehHTML) {
     if (!ehHTML) {
         $td.textContent = info;
     } else {
-        $td.innerHTML = "<a href = ../view/formBuscar.html?id="+info+">[Alterar]</a>";
+        $td.innerHTML = "<a href = ../view/searchForm.html?id="+info+">[Alterar]</a>";
         $td.innerHTML += "<a href =# onclick='excluirFilme("+info+");'>[Excluir]</a>";
     } 
     noPai.appendChild($td);

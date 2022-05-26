@@ -10,7 +10,7 @@ $btnAlterar.addEventListener('click', function(event) {
         "titulo": $inputTitulo.value,
         "avaliacao": parseFloat($inputAvaliacao.value)
     };
-    fazRequisicaoAjax("PUT", "../controller/filmeAlterar.php", cbSucessoReqAlterar, cbErroReqAlterar, filme);
+    fazRequisicaoAjax("PUT", "../controller/change.php", cbSucessoReqAlterar, cbErroReqAlterar, filme);
 })
 
 const $btnCancelar = document.querySelector('#cancelar');

@@ -1,5 +1,5 @@
 <?php
-    require_once('../model/conexao.php');
+    require_once('../model/connection.php');
     
     $resposta["erro"] = false;
     $resposta["dados"] = null;

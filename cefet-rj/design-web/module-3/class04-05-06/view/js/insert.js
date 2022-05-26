@@ -8,7 +8,7 @@ $btnEnviar.addEventListener('click', function(event) {
         "titulo": $inputTitulo.value,
         "avaliacao": parseFloat($inputAvaliacao.value)
     };
-    fazRequisicaoAjax("POST", "../controller/filmeInserir.php", cbSucessoReqInserir, cbErroReqInserir, filme);
+    fazRequisicaoAjax("POST", "../controller/insert.php", cbSucessoReqInserir, cbErroReqInserir, filme);
 })
 
 //callback

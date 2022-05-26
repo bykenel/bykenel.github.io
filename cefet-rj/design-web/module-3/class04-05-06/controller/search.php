@@ -1,5 +1,5 @@
 <?php
-    require_once('../model/conexao.php');
+    require_once('../model/connection.php');
 
     $id = (isset($_GET["id"]) && $_GET["id"] > 0) ? $_GET["id"] : "";
 

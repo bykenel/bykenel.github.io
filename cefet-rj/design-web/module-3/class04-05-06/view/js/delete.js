@@ -1,7 +1,7 @@
 function excluirFilme(id) {
     if(confirm('Confirma a exclusão do filme de id '+id+'?')) {
         let filme = {"id": id};
-        fazRequisicaoAjax("DELETE", "../controller/filmeExcluir.php", cbSucessoReqExcluir, cbErroReqExcluir, filme);
+        fazRequisicaoAjax("DELETE", "../controller/delete.php", cbSucessoReqExcluir, cbErroReqExcluir, filme);
     }
 }
 

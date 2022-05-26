@@ -1,5 +1,5 @@
 <?php
-    require_once('../model/conexao.php');
+    require_once('../model/connection.php');
     $filmePost = file_get_contents('php://input');
     $filmeMatriz = json_decode($filmePost, true);
 

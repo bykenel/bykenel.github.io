@@ -6,7 +6,7 @@ window.onload = function(){
 }
 
 function buscarFilme(id){
-    fazRequisicaoAjax("GET", "../controller/filmeBuscar.php?id="+id+"", cbSucessoReqBuscar, cbErroReqBuscar, null);
+    fazRequisicaoAjax("GET", "../controller/search.php?id="+id+"", cbSucessoReqBuscar, cbErroReqBuscar, null);
 }
 
 //callback
