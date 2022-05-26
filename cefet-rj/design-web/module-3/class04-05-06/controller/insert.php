@@ -1,29 +1,29 @@
 <?php
     require_once('../model/connection.php');
-    $filmePost = file_get_contents('php://input');
-    $filmeMatriz = json_decode($filmePost, true);
+    $filmPost = file_get_contents('php://input');
+    $filmContent = json_decode($filmPost, true);
 
-    $titulo = (isset($filmeMatriz["titulo"]) && $filmeMatriz["titulo"] != null) ? strtoupper($filmeMatriz["titulo"]) : "";
-    $avaliacao = (isset($filmeMatriz["avaliacao"]) && $filmeMatriz["avaliacao"] != null) ? $filmeMatriz["avaliacao"] : "";
+    $title = (isset($filmContent["titulo"]) && $filmContent["titulo"] != null) ? strtoupper($filmContent["titulo"]) : "";
+    $rating = (isset($filmContent["avaliacao"]) && $filmContent["avaliacao"] != null) ? $filmContent["avaliacao"] : "";
 
-    $resposta["erro"] = false;
-    $resposta["dados"] = null;
-    $resposta["msgErro"] = "";
-    $resposta["msgSucesso"] = "";
+    $response["erro"] = false;
+    $response["dados"] = null;
+    $response["msgErro"] = "";
+    $response["msgSucesso"] = "";
 
-    if ($titulo != "" && $avaliacao != "") {
+    if ($title != "" && $rating != "") {
         try {
             $sql = "INSERT INTO filmes_assistidos(titulo, avaliacao) VALUES(?, ?)";
-            $stmt = $conexao -> prepare($sql);
-            $stmt -> bindParam (1, $titulo);
-            $stmt -> bindParam (2, $avaliacao);
+            $stmt = $connection -> prepare($sql);
+            $stmt -> bindParam (1, $title);
+            $stmt -> bindParam (2, $rating);
             $stmt -> execute();
-            $resposta["msgSucesso"] = "{$stmt -> rowCount()} filme inserido com sucesso! O id inserido foi {$conexao -> lastInsertId()}";
+            $response["msgSucesso"] = "{$stmt -> rowCount()} filme inserido com sucesso! O id inserido foi {$connection -> lastInsertId()}";
         } catch(PDOException $e) {
-            $resposta ["erro"] = true;
-            $resposta ["msgErro"] = "Erro ao inserir filme: ".$e -> getMessage(); 
+            $response ["erro"] = true;
+            $response ["msgErro"] = "Erro ao inserir filme: ".$e -> getMessage(); 
         } finally {
-            echo json_encode($resposta);
+            echo json_encode($response);
             exit();
         }
     }

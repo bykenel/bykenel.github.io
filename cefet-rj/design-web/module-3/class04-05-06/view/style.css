@@ -5,14 +5,14 @@
 ul.menu{
     margin-top: 0;
     padding: 15px 15px;
-    text-align: center; /* centraliza na horizontal */
+    text-align: center; /* center horizontally */
 }
 ul.menu li {
-    display: inline-block; /* centraliza na horizontal */
+    display: inline-block; /* center horizontally */
     margin: 0 5px;
 }
 .titulo{
-    text-align: center; /* centraliza na horizontal */
+    text-align: center; /* center horizontally */
 }
 table, th, td {
     border: 1px solid black;
@@ -23,7 +23,7 @@ table, th, td {
 }
 #tblFilmes {
     width: 70%;
-    margin: 0px auto; /* centraliza na horizontal */
+    margin: 0px auto; /* center horizontally */
 }
 th, td{
     width: auto;

@@ -1,27 +1,27 @@
 <?php
     require_once('../model/connection.php');
-    $filmePost = file_get_contents('php://input');
-    $filmeMatriz = json_decode($filmePost, true);
+    $filmPost = file_get_contents('php://input');
+    $filmContent = json_decode($filmPost, true);
 
-    $id = (isset($filmeMatriz["id"]) && $filmeMatriz["id"] != null) ? $filmeMatriz["id"] : "";
+    $id = (isset($filmContent["id"]) && $filmContent["id"] != null) ? $filmContent["id"] : "";
 
-    $resposta["erro"] = false;
-    $resposta["dados"] = null;
-    $resposta["msgErro"] = "";
-    $resposta["msgSucesso"] = "";
+    $response["erro"] = false;
+    $response["dados"] = null;
+    $response["msgErro"] = "";
+    $response["msgSucesso"] = "";
     
     if ($id != null) {
         try {
             $sql = "DELETE FROM filmes_assistidos WHERE id = ?";
-            $stmt = $conexao -> prepare($sql);
+            $stmt = $connection -> prepare($sql);
             $stmt -> bindParam (1, $id);
             $stmt -> execute();
-            $resposta["msgSucesso"] = "Filmes de id $id excluído com sucesso!";
+            $response["msgSucesso"] = "Filmes de id $id excluído com sucesso!";
         } catch(PDOException $e) {
-            $resposta ["erro"] = true;
-            $resposta ["msgErro"] = "Erro ao excluir filme: ".$e -> getMessage();
+            $response ["erro"] = true;
+            $response ["msgErro"] = "Erro ao excluir filme: ".$e -> getMessage();
         } finally {
-            echo json_encode($resposta);
+            echo json_encode($response);
             exit();
         }
     }    

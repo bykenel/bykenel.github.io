@@ -1,31 +1,31 @@
 <?php
     require_once('../model/connection.php');
-    $filmePost = file_get_contents('php://input');
-    $filmeMatriz = json_decode($filmePost, true);
+    $filmPost = file_get_contents('php://input');
+    $filmContent = json_decode($filmPost, true);
 
-    $id = (isset($filmeMatriz["id"]) && $filmeMatriz["id"] > 0) ? $filmeMatriz["id"] : "";
-    $titulo = (isset($filmeMatriz["titulo"]) && $filmeMatriz["titulo"] != null) ? strtoupper($filmeMatriz["titulo"]) : "";
-    $avaliacao = (isset($filmeMatriz["avaliacao"]) && $filmeMatriz["avaliacao"] != null) ? $filmeMatriz["avaliacao"] : "";
+    $id = (isset($filmContent["id"]) && $filmContent["id"] > 0) ? $filmContent["id"] : "";
+    $title = (isset($filmContent["titulo"]) && $filmContent["titulo"] != null) ? strtoupper($filmContent["titulo"]) : "";
+    $rating = (isset($filmContent["avaliacao"]) && $filmContent["avaliacao"] != null) ? $filmContent["avaliacao"] : "";
 
-    $resposta["erro"] = false;
-    $resposta["dados"] = null;
-    $resposta["msgErro"] = "";
-    $resposta["msgSucesso"] = "";
+    $response["erro"] = false;
+    $response["dados"] = null;
+    $response["msgErro"] = "";
+    $response["msgSucesso"] = "";
 
-    if ($titulo != "" && $avaliacao != "") {
+    if ($title != "" && $rating != "") {
         try {
             $sql = "UPDATE filmes_assistidos SET titulo=?, avaliacao=? WHERE id=?";
-            $stmt = $conexao -> prepare($sql);
-            $stmt -> bindParam (1, $titulo);
-            $stmt -> bindParam (2, $avaliacao);
+            $stmt = $connection -> prepare($sql);
+            $stmt -> bindParam (1, $title);
+            $stmt -> bindParam (2, $rating);
             $stmt -> bindParam (3, $id);
             $stmt -> execute();
-            $resposta["msgSucesso"] = "{$stmt -> rowCount()} filme alterado com sucesso! O id alterado foi {$id}";
+            $response["msgSucesso"] = "{$stmt -> rowCount()} filme alterado com sucesso! O id alterado foi {$id}";
         } catch(PDOException $e) {
-            $resposta ["erro"] = true;
-            $resposta ["msgErro"] = "Erro ao alterar filme: ".$e -> getMessage(); 
+            $response ["erro"] = true;
+            $response ["msgErro"] = "Erro ao alterar filme: ".$e -> getMessage(); 
         } finally {
-            echo json_encode($resposta);
+            echo json_encode($response);
             exit();
         }
     }

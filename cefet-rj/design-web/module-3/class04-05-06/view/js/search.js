@@ -1,26 +1,26 @@
 window.onload = function(){
     let qs = window.location.search.replace('?','');
-    let parametrosBuscar = qs.split('=');
-    let idFilme = parametrosBuscar[1];
-    buscarFilme(idFilme);
+    let searchParameters = qs.split('=');
+    let filmId = searchParameters[1];
+    searchFilm(filmId);
 }
 
-function buscarFilme(id){
-    fazRequisicaoAjax("GET", "../controller/search.php?id="+id+"", cbSucessoReqBuscar, cbErroReqBuscar, null);
+function searchFilm(id){
+    ajaxRequest("GET", "../controller/search.php?id="+id+"", reqSearchSuccess, reqSearchError, null);
 }
 
 //callback
-function cbErroReqBuscar(msg) {
+function reqSearchError(msg) {
     document.querySelector('#msgErro').textContent = msg;
     return;
 }
 
-function cbSucessoReqBuscar(resposta) {
-    let filme = resposta.dados;
-    document.querySelector('#id').value = filme.id;
-    document.querySelector('#titulo').value = filme.titulo;
-    document.querySelector('#avaliacao').value = filme.avaliacao;
-    document.querySelector('#msgSucesso').textContent = resposta.msgSucesso;
+function reqSearchSuccess(response) {
+    let film = response.dados;
+    document.querySelector('#id').value = film.id;
+    document.querySelector('#titulo').value = film.titulo;
+    document.querySelector('#avaliacao').value = film.avaliacao;
+    document.querySelector('#msgSucesso').textContent = response.msgSucesso;
     setTimeout(function(){
         document.querySelector('#msgSucesso').textContent = "";
     }, 2500);

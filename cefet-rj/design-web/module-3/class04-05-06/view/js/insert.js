@@ -1,24 +1,24 @@
-const $btnEnviar = document.querySelector('#enviar');
-$btnEnviar.addEventListener('click', function(event) {
+const $sendButton = document.querySelector('#enviar');
+$sendButton.addEventListener('click', function(event) {
     event.preventDefault();
     
-    let $inputTitulo = document.querySelector('#titulo');
-    let $inputAvaliacao = document.querySelector('#avaliacao');
-    let filme = {
-        "titulo": $inputTitulo.value,
-        "avaliacao": parseFloat($inputAvaliacao.value)
+    let $titleInput = document.querySelector('#titulo');
+    let $ratingInput = document.querySelector('#avaliacao');
+    let film = {
+        "titulo": $titleInput.value,
+        "avaliacao": parseFloat($ratingInput.value)
     };
-    fazRequisicaoAjax("POST", "../controller/insert.php", cbSucessoReqInserir, cbErroReqInserir, filme);
+    ajaxRequest("POST", "../controller/insert.php", reqInsertSuccess, reqInsertError, film);
 })
 
 //callback
-function cbErroReqInserir(msg) {
+function reqInsertError(msg) {
     document.querySelector('#msgErro').textContent = msg;
     return;
 }
 
-function cbSucessoReqInserir(resposta) {
-    document.querySelector('#msgSucesso').textContent = resposta.msgSucesso;
+function reqInsertSuccess(response) {
+    document.querySelector('#msgSucesso').textContent = response.msgSucesso;
     setTimeout(function(){
         window.location.href = "../view/index.html";
     }, 2500);
