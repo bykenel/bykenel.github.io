@@ -1,20 +1,20 @@
 <?php
     require_once('../model/connection.php');
     
-    $response["erro"] = false;
-    $response["dados"] = null;
-    $response["msgErro"] = "";
-    $response["msgSucesso"] = "";
+    $response["error"] = false;
+    $response["data"] = null;
+    $response["errorMsg"] = "";
+    $response["successMsg"] = "";
     
     try {
         $sql = "SELECT * FROM filmes_assistidos ORDER BY id";
         $stmt = $connection -> prepare($sql);
         $stmt -> execute();
-        $response["dados"] = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-        $response["msgSucesso"] = "Filmes listados com sucesso!";
+        $response["data"] = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $response["successMsg"] = "Filmes listados com sucesso!";
     } catch(PDOException $e) {
-        $response ["erro"] = true;
-        $response ["msgErro"] = "Erro ao listar filmes: ".$e -> getMessage();
+        $response ["error"] = true;
+        $response ["errorMsg"] = "Erro ao listar filmes: ".$e -> getMessage();
     } finally {
         echo json_encode($response);
         exit();

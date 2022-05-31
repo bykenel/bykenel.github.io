@@ -7,31 +7,38 @@
     <title>Cinedesweb - v3</title>
     <link rel="stylesheet" href="style.css" /> 
 </head>
+
 <body>
     <nav>
         <ul class="menu">
             <li><a href="index.html">Home</a></li>
         </ul>
     </nav>
+
     <main>
-        <h2 class="titulo">Editar filme</h2>
+        <h2 class="title">Editar filme</h2>
         <hr/>
-        <div id="erro">
-            <span id="msgErro"></span> <!--red-->
-            <span id="msgSucesso"></span> <!--blue-->
+
+        <div id="status">
+            <span id="errorMsg"></span> <!--red-->
+            <span id="successMsg"></span> <!--blue-->
         </div> 
+
         <section><form>
             Id: <input type="text" name="id" id="id" readonly/>
-            Título: <input type="text" name="titulo" id="titulo"/>
-            Avaliação: <input type="number" min="0" max="10" step="0.1" name="avaliacao" id="avaliacao"/>
-            <input type="submit" value="Alterar" id="alterar"/>
-            <input type="button" value="Cancelar" id="cancelar"/>
-        </form></section><br/>
+            Título: <input type="text" name="title" id="title"/>
+            Avaliação: <input type="number" min="0" max="10" step="0.1" name="rating" id="rating"/>
+            <input type="submit" value="Alterar" id="change"/>
+            <input type="button" value="Cancelar" id="cancel"/>
+        </form></section>
+        <br/>
     </main>
+
     <footer>
         <hr/>
         Todos os direitos reservados
     </footer>
+
     <script src="js/ajax.js"></script>
     <script src="js/search.js"></script>
     <script src="js/change.js"></script>

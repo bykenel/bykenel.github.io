@@ -7,33 +7,40 @@
     <title>Cinedesweb - v1</title>
     <link rel="stylesheet" href="style.css" /> 
 </head>
+
 <body>
     <nav>
         <ul class="menu">
             <li><a href="insertForm.html">Inserir novo filme</a></li>
         </ul>
     </nav>
+
     <main>
-        <h2 class="titulo">Lista de Filmes assistidos</h2>
+        <h2 class="title">Lista de Filmes assistidos</h2>
         <hr/>
-        <div id="erro">
-            <span id="msgErro"></span> <!--red-->
-            <span id="msgSucesso"></span> <!--blue-->
+
+        <div id="status">
+            <span id="errorMsg"></span> <!--red-->
+            <span id="successMsg"></span> <!--blue-->
         </div> 
-        <table id="tblFilmes">
-        <thead>
-            <tr><th>ID</th><th>TITULO</th><th>AVALIAÇÃO</th><th>AÇÕES</th></tr>
-        </thead>
-        <tbody>    
-            <!-- table -->
-        </tbody>
+
+        <table id="filmTable">
+            <thead>
+                <tr><th>ID</th><th>TITULO</th><th>AVALIAÇÃO</th><th>AÇÕES</th></tr>
+            </thead>
+
+            <tbody>    
+                <!-- table -->
+            </tbody>
         </table>
         <br/>
     </main>
+
     <footer>
         <hr/>
         Todos os direitos reservados
     </footer>
+
     <script src="js/ajax.js"></script>
     <script src="js/list.js"></script>
     <script src="js/delete.js"></script>

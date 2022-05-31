@@ -12,10 +12,10 @@ function ajaxRequest (method, url, reqSuccess, reqError, data = null) {
             if(xhr.status === 200 || xhr.status === 304) {
                 let response = JSON.parse(xhr.responseText);
                 console.log(response);
-                if (response.erro === false) {
+                if (response.error === false) {
                     reqSuccess(response);
                 } else {
-                    reqError(response.msgErro);
+                    reqError(response.errorMsg);
                 }
             }
         }

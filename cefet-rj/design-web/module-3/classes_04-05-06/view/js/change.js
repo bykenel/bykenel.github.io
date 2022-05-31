@@ -1,19 +1,19 @@
-const $changeButton = document.querySelector('#alterar');
+const $changeButton = document.querySelector('#change');
 $changeButton.addEventListener('click', function(event) {
     event.preventDefault();
     
     let $idInput = document.querySelector('#id');
-    let $titleInput = document.querySelector('#titulo');
-    let $ratingInput = document.querySelector('#avaliacao');
+    let $titleInput = document.querySelector('#title');
+    let $ratingInput = document.querySelector('#rating');
     let film = {
         "id": $idInput.value,
-        "titulo": $titleInput.value,
-        "avaliacao": parseFloat($ratingInput.value)
+        "title": $titleInput.value,
+        "rating": parseFloat($ratingInput.value)
     };
     ajaxRequest("PUT", "../controller/change.php", reqChangeSuccess, reqChangeError, film);
 })
 
-const $cancelButton = document.querySelector('#cancelar');
+const $cancelButton = document.querySelector('#cancel');
 $cancelButton.addEventListener('click', ()=> {
     if (confirm('Deseja mesmo cancelar a alteração?')){
         window.location.href = "../view/index.html";
@@ -22,12 +22,12 @@ $cancelButton.addEventListener('click', ()=> {
 
 //callback
 function reqChangeError(msg) {
-    document.querySelector('#msgErro').textContent = msg;
+    document.querySelector('#errorMsg').textContent = msg;
     return;
 }
 
 function reqChangeSuccess(response) {
-    document.querySelector('#msgSucesso').textContent = response.msgSucesso;
+    document.querySelector('#successMsg').textContent = response.successMsg;
     setTimeout(function(){
         window.location.href = "../view/index.html";
     }, 2500);

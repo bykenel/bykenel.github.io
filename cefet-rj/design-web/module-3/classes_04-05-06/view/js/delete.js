@@ -7,12 +7,12 @@ function deleteFilm(id) {
 
 //callback
 function reqDeleteError(msg) {
-    document.querySelector('#msgErro').textContent = msg;
+    document.querySelector('#errorMsg').textContent = msg;
     return;
 }
 
 function reqDeleteSuccess(response) {
-    document.querySelector('#msgSucesso').textContent = response.msgSucesso;
+    document.querySelector('#successMsg').textContent = response.successMsg;
     setTimeout(function(){
         window.location.href = "../view/index.html";
     }, 2500);

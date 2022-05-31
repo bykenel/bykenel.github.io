@@ -5,10 +5,10 @@
 
     $id = (isset($filmContent["id"]) && $filmContent["id"] != null) ? $filmContent["id"] : "";
 
-    $response["erro"] = false;
-    $response["dados"] = null;
-    $response["msgErro"] = "";
-    $response["msgSucesso"] = "";
+    $response["error"] = false;
+    $response["data"] = null;
+    $response["errorMsg"] = "";
+    $response["successMsg"] = "";
     
     if ($id != null) {
         try {
@@ -16,10 +16,10 @@
             $stmt = $connection -> prepare($sql);
             $stmt -> bindParam (1, $id);
             $stmt -> execute();
-            $response["msgSucesso"] = "Filmes de id $id excluído com sucesso!";
+            $response["successMsg"] = "Filmes de id $id excluído com sucesso!";
         } catch(PDOException $e) {
-            $response ["erro"] = true;
-            $response ["msgErro"] = "Erro ao excluir filme: ".$e -> getMessage();
+            $response ["error"] = true;
+            $response ["errorMsg"] = "Erro ao excluir filme: ".$e -> getMessage();
         } finally {
             echo json_encode($response);
             exit();

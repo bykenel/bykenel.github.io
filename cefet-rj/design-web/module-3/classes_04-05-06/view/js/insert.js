@@ -1,24 +1,24 @@
-const $sendButton = document.querySelector('#enviar');
+const $sendButton = document.querySelector('#send');
 $sendButton.addEventListener('click', function(event) {
     event.preventDefault();
     
-    let $titleInput = document.querySelector('#titulo');
-    let $ratingInput = document.querySelector('#avaliacao');
+    let $titleInput = document.querySelector('#title');
+    let $ratingInput = document.querySelector('#rating');
     let film = {
-        "titulo": $titleInput.value,
-        "avaliacao": parseFloat($ratingInput.value)
+        "title": $titleInput.value,
+        "rating": parseFloat($ratingInput.value)
     };
     ajaxRequest("POST", "../controller/insert.php", reqInsertSuccess, reqInsertError, film);
 })
 
 //callback
 function reqInsertError(msg) {
-    document.querySelector('#msgErro').textContent = msg;
+    document.querySelector('#errorMsg').textContent = msg;
     return;
 }
 
 function reqInsertSuccess(response) {
-    document.querySelector('#msgSucesso').textContent = response.msgSucesso;
+    document.querySelector('#successMsg').textContent = response.successMsg;
     setTimeout(function(){
         window.location.href = "../view/index.html";
     }, 2500);

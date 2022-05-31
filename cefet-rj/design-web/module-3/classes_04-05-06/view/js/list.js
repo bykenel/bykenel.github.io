@@ -27,11 +27,11 @@ function tdFormer(parentNode, info, html) {
 
 //callback
 function reqListError(msg) {
-    document.querySelector('#msgErro').textContent = msg;
+    document.querySelector('#errorMsg').textContent = msg;
     return;
 }
 
 function reqListSuccess(response) {
-    let data = response.dados;
-    tableSetup(data);
+    let dataContent = response.data;
+    tableSetup(dataContent);
 }

@@ -3,10 +3,10 @@
 
     $id = (isset($_GET["id"]) && $_GET["id"] > 0) ? $_GET["id"] : "";
 
-    $response["erro"] = false;
-    $response["dados"] = null;
-    $response["msgErro"] = "";
-    $response["msgSucesso"] = "";
+    $response["error"] = false;
+    $response["data"] = null;
+    $response["errorMsg"] = "";
+    $response["successMsg"] = "";
     
     try {
         $sql = "SELECT * FROM filmes_assistidos WHERE id = ?";
@@ -14,11 +14,11 @@
         $stmt -> bindParam (1, $id);
         $stmt -> execute();
         $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-        $response["dados"] = $result[0];
-        $response["msgSucesso"] = "Filmes de id $id retornado com sucesso!";
+        $response["data"] = $result[0];
+        $response["successMsg"] = "Filmes de id $id retornado com sucesso!";
     } catch(PDOException $e) {
-        $response ["erro"] = true;
-        $response ["msgErro"] = "Erro ao retornar filme: ".$e -> getMessage();
+        $response ["error"] = true;
+        $response ["errorMsg"] = "Erro ao retornar filme: ".$e -> getMessage();
     } finally {
         echo json_encode($response);
         exit();

@@ -7,8 +7,8 @@
 		$connection = new PDO($dsn, $user, $pass);
 		$connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch(PDOException $e) {
-		$response["erro"] = true;
-		$response["msgErro"] = "Erro ao conectar com o BD: " .$e -> getMessage();
+		$response["error"] = true;
+		$response["errorMsg"] = "Erro ao conectar com o BD: " .$e -> getMessage();
 		echo json_encode($response);
 		exit();
 	}

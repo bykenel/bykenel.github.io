@@ -11,17 +11,17 @@ function searchFilm(id){
 
 //callback
 function reqSearchError(msg) {
-    document.querySelector('#msgErro').textContent = msg;
+    document.querySelector('#errorMsg').textContent = msg;
     return;
 }
 
 function reqSearchSuccess(response) {
-    let film = response.dados;
+    let film = response.data;
     document.querySelector('#id').value = film.id;
-    document.querySelector('#titulo').value = film.titulo;
-    document.querySelector('#avaliacao').value = film.avaliacao;
-    document.querySelector('#msgSucesso').textContent = response.msgSucesso;
+    document.querySelector('#title').value = film.titulo;
+    document.querySelector('#rating').value = film.avaliacao;
+    document.querySelector('#successMsg').textContent = response.successMsg;
     setTimeout(function(){
-        document.querySelector('#msgSucesso').textContent = "";
+        document.querySelector('#successMsg').textContent = "";
     }, 2500);
 }
