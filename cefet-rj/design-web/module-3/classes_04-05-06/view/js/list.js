@@ -6,8 +6,8 @@ function tableSetup(data) {
         const $tr = document.createElement('tr');
 
         tdFormer($tr, line.id, false); //id
-        tdFormer($tr, line.titulo, false); //title
-        tdFormer($tr, line.avaliacao, false); //rating
+        tdFormer($tr, line.title, false); //title
+        tdFormer($tr, line.rating, false); //rating
         tdFormer($tr, line.id, true); //links
 
         document.querySelector('tbody').appendChild($tr);
