@@ -18,8 +18,8 @@ function reqSearchError(msg) {
 function reqSearchSuccess(response) {
     let film = response.data;
     document.querySelector('#id').value = film.id;
-    document.querySelector('#title').value = film.title;
-    document.querySelector('#rating').value = film.rating;
+    document.querySelector('#title').value = film.titulo;
+    document.querySelector('#rating').value = film.avaliacao;
     document.querySelector('#successMsg').textContent = response.successMsg;
     setTimeout(function(){
         document.querySelector('#successMsg').textContent = "";
