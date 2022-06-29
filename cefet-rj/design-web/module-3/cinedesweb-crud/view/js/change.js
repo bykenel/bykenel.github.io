@@ -5,10 +5,12 @@ $changeButton.addEventListener('click', function(event) {
     let $idInput = document.querySelector('#id');
     let $titleInput = document.querySelector('#title');
     let $ratingInput = document.querySelector('#rating');
+    let $genreInput = document.querySelector('#genre');
     let film = {
         "id": $idInput.value,
         "title": $titleInput.value,
-        "rating": parseFloat($ratingInput.value)
+        "rating": parseFloat($ratingInput.value),
+        "genre": parseInt($genreInput.value)
     };
     ajaxRequest("PUT", "../controller/change.php", reqChangeSuccess, reqChangeError, film);
 })

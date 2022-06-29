@@ -6,6 +6,7 @@
     $id = (isset($filmContent["id"]) && $filmContent["id"] > 0) ? $filmContent["id"] : "";
     $title = (isset($filmContent["title"]) && $filmContent["title"] != null) ? strtoupper($filmContent["title"]) : "";
     $rating = (isset($filmContent["rating"]) && $filmContent["rating"] != null) ? $filmContent["rating"] : "";
+    $genre = (isset($filmContent["genre"]) && $filmContent["genre"] > 0) ? $filmContent["genre"] : "";
 
     $response["error"] = false;
     $response["data"] = null;
@@ -14,11 +15,12 @@
 
     if ($title != "" && $rating != "") {
         try {
-            $sql = "UPDATE filmes_assistidos SET titulo=?, avaliacao=? WHERE id=?";
+            $sql = "UPDATE filmes_assistidos SET titulo=?, avaliacao=?, genero_id=? WHERE id=?";
             $stmt = $connection -> prepare($sql);
             $stmt -> bindParam (1, $title);
             $stmt -> bindParam (2, $rating);
-            $stmt -> bindParam (3, $id);
+            $stmt -> bindParam (3, $genre);
+            $stmt -> bindParam (4, $id);
             $stmt -> execute();
             $response["successMsg"] = "{$stmt -> rowCount()} filme alterado com sucesso! O id alterado foi {$id}";
         } catch(PDOException $e) {

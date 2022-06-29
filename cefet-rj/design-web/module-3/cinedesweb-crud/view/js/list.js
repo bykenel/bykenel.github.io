@@ -8,6 +8,7 @@ function tableSetup(data) {
         tdFormer($tr, line.id, false); //id
         tdFormer($tr, line.titulo, false); //title
         tdFormer($tr, line.avaliacao, false); //rating
+        tdFormer($tr, line.genero_descricao, false); //genre
         tdFormer($tr, line.id, true); //links
 
         document.querySelector('tbody').appendChild($tr);
