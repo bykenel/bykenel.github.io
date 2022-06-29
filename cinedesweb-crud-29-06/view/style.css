@@ -1,0 +1,53 @@
+﻿nav{
+    background-color: #DBDBDB;
+    height: 60px;
+}
+
+ul.menu{
+    margin-top: 0;
+    padding: 15px 15px;
+    text-align: center; /* center horizontally */
+}
+
+ul.menu li {
+    display: inline-block; /* center horizontally */
+    margin: 0 5px;
+}
+
+.title{
+    text-align: center; /* center horizontally */
+}
+
+table, th, td {
+    border: 1px solid black;
+    width: 70%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#filmTable{
+    width: 70%;
+    margin: 0px auto; /* center horizontally */
+}
+
+th, td{
+    width: auto;
+}
+
+#status{
+    text-align: center;
+}
+
+#errorMsg{
+    color: red;
+}
+
+#successMsg{
+    color: navy;
+}
+
+footer{
+    text-align: center;
+    font-size: smaller;
+}
