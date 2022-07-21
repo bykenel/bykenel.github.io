@@ -1,0 +1,57 @@
+import {getPromise} from '../util-js/getPromise.js';
+import {showErrorMsg} from '../util-js/msgUtil.js';
+import {deleteFilm} from './delete.js'
+
+getPromise("GET", "../controller/films-php/list.php")
+    .then(function(response){
+        if(response.error === false)
+            reqFilmListSuccess(response);
+        else
+            showErrorMsg(response.errorMsg);
+    })
+    .then(msg => console.log(msg))
+    .catch(function(error){
+        showErrorMsg(error);
+    })
+
+function tableSetup(data) {
+    for (const i in data) {
+        let line = data[i];
+        const $tr = document.createElement('tr');
+    
+        tdFormer($tr, line.id, false); //id
+        tdFormer($tr, line.titulo, false); //title
+        tdFormer($tr, line.avaliacao, false); //rating
+        tdFormer($tr, line.genero_descricao, false); //genre
+        tdFormer($tr, line.id, true); //links
+    
+        document.querySelector('tbody').appendChild($tr);
+    }
+}
+    
+const $table = document.querySelector('tbody');
+$table.addEventListener('click', function(event){
+    let link = event.target;
+    if(link.textContent === "[Excluir]"){
+        let column = link.parentNode;
+        let line = column.parentNode;
+        let filmToDelete = parseInt(line.firstChild.textContent);
+        deleteFilm(filmToDelete);
+    } 
+})
+
+function tdFormer(parentNode, info, html) {
+    let $td = document.createElement('td');
+    if (!html) {
+        $td.textContent = info;
+    } else {
+        $td.innerHTML = "<a href = ../view/filmSearchForm.html?id="+info+">[Alterar]</a>";
+        $td.innerHTML += "<a href =# onclick='deleteFilm("+info+");'>[Excluir]</a>";
+    } 
+    parentNode.appendChild($td);
+}
+
+function reqFilmListSuccess(response) {
+    let dataContent = response.data;
+    tableSetup(dataContent);
+}

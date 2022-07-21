@@ -14,8 +14,8 @@ INSERT INTO filmes_assistidos VALUES(1, 'INTERESTELAR', 9.8), (2, 'AMOR A TODA P
 (9, 'PULP FICTION', 9.4), (10, 'AS BRANQUELAS', 5.4), (11, 'EFEITO BORBOLETA', 9.5);
 
 CREATE TABLE generos(id int AUTO_INCREMENT PRIMARY KEY,
-                        descricao VARCHAR(30) NOT NULL,
-                        UNIQUE INDEX idx_generos_descricao(descricao)
+                      descricao VARCHAR(30) NOT NULL,
+                      UNIQUE INDEX idx_generos_descricao(descricao)
                     ) ENGINE = INNODB;
 
 INSERT INTO generos(descricao) VALUES('INDEFINIDO'), ('FICÇÃO CIENTIÍFICA'), ('COMÉDIA'), 

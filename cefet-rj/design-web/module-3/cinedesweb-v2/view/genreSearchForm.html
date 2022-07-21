@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinedesweb</title>
+    <link rel="stylesheet" href="style.css" /> 
+</head>
+
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="genres.html">Voltar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2 class="title">Editar gênero</h2>
+        <hr/>
+
+        <div id="status">
+            <span id="errorMsg"></span> <!--red-->
+            <span id="successMsg"></span> <!--blue-->
+        </div>
+
+        <section><form>
+            Id: <input type="text" name="id" id="id" readonly/>
+            Descrição: <input type="text" name="description" id="description"/>
+            <input type="submit" value="Alterar" id="change"/>
+            <input type="button" value="Cancelar" id="cancel"/>
+        </form></section>
+        <br/>
+    </main>
+
+    <footer>
+        <hr/>
+        Todos os direitos reservados
+    </footer>
+
+    <script src="genres-js/search.js" type="module"></script>
+    <script src="genres-js/change.js" type="module"></script>
+</body>
+</html>
