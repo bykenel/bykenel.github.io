@@ -35,6 +35,32 @@ p {
     margin-bottom: 0px;
 }
 
+.btn-group {
+    float: right;
+    position: static;
+    margin-top: 70px;
+    margin-right: 10px;
+}
+
+.text-muted {
+    float: right;
+    position: static;
+    margin-top: 76px;
+    margin-right: 15px;
+}
+
+.columns{
+    float: left;
+    position: static;
+    margin-right: 20px;
+}
+
+ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
 html {
     scroll-behavior: smooth;
 }
