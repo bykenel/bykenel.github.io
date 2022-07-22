@@ -76,3 +76,16 @@ p {
 .itemMenu {
     color: white;
 }
+
+@media only screen and (max-width: 700px) {
+    .btn-group {
+        margin-top: 0;
+        margin-right: 10px;
+    }
+    
+    .text-muted {
+        margin-top: 0;
+        margin-right: 15px;
+    }
+    
+  }
