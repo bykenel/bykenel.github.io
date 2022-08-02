@@ -2,12 +2,12 @@
 #include <avr/pgmspace.h>
 #include <TimerOne.h>
    
-int DataPin = 4;
-int ClockPin = 5;
-int LoadPin = 6;
+int DataPin = 4; // DIN
+int ClockPin = 5; // CLK
+int LoadPin = 6; // CS/Load
 
 const int LM35 = A0;
-float temperature ;
+float temperature;
   
 byte buffer[8];  
    
@@ -245,9 +245,9 @@ void loop()
 #include <avr/pgmspace.h>
 #include <TimerOne.h>
    
-int DataPin = 4;
-int ClockPin = 5;
-int LoadPin = 6;
+int DataPin = 4; // DIN
+int ClockPin = 5; // CLK
+int LoadPin = 6; // CS/Load
   
 byte buffer[8];  
    
