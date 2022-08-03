@@ -1,8 +1,9 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 import {deleteGenre} from './delete.js'
 
-getPromise("GET", "../controller/genres-php/list.php")
+getFetch("GET", "../controller/genres-php/list.php")
     .then(function(response){
         if(response.error === false)
             reqGenreListSuccess(response);

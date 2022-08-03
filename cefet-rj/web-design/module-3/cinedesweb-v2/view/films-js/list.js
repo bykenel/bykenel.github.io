@@ -1,8 +1,9 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 import {deleteFilm} from './delete.js'
 
-getPromise("GET", "../controller/films-php/list.php")
+getFetch("GET", "../controller/films-php/list.php")
     .then(function(response){
         if(response.error === false)
             reqFilmListSuccess(response);

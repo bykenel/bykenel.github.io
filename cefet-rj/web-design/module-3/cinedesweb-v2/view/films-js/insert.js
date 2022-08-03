@@ -1,8 +1,9 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 
 window.onload = function() {
-     getPromise("GET", "../controller/genres-php/list.php")
+     getFetch("GET", "../controller/genres-php/list.php")
         .then(function(response){
             if(response.error === false)
                 reqGenreListSuccess(response);
@@ -24,7 +25,7 @@ $sendButton.addEventListener('click', function(event) {
         "rating": parseFloat($ratingInput.value),
         "genre": parseInt($genreInput.value)
     };
-    getPromise("POST", "../controller/films-php/insert.php", film)
+    getFetch("POST", "../controller/films-php/insert.php", film)
         .then(function(response) {
             if(response.error === false)
                 reqFilmInsertSuccess(response);

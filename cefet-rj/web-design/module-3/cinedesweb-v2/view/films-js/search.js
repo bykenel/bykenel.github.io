@@ -1,4 +1,5 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 
 window.onload = function(){
@@ -9,7 +10,7 @@ window.onload = function(){
 }
 
 function searchFilm(id) {  
-    getPromise("GET", "../controller/films-php/search.php?id="+id+"")
+    getFetch("GET", "../controller/films-php/search.php?id="+id+"")
         .then(function(response) {
             if(response.error === false)
                 reqFilmSearchSuccess(response);
@@ -38,7 +39,7 @@ function reqGenreSearchSuccess(response, selectedGenreId) {
 }
 
 function searchGenre(selectedGenreId) {
-    getPromise("GET", "../controller/genres-php/list.php")
+    getFetch("GET", "../controller/genres-php/list.php")
         .then(function(response) {
             if(response.error === false) {
                 reqGenreSearchSuccess(response, selectedGenreId);

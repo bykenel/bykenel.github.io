@@ -1,4 +1,5 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
       
 const $changeButton = document.querySelector('#change');
@@ -11,7 +12,7 @@ $changeButton.addEventListener('click', function(event) {
         "id": $idInput.value,
         "description": $descriptionInput.value
     };
-    getPromise("PUT", "../controller/genres-php/change.php", genre)
+    getFetch("PUT", "../controller/genres-php/change.php", genre)
         .then(function(response){
             if (response.error === false)
                 reqGenreChangeSuccess(response);

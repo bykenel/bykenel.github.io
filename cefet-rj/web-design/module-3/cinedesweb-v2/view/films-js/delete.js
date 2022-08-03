@@ -1,10 +1,11 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 
 export function deleteFilm(id) {
     if(confirm('Confirma a exclusão do film de id '+id+'?')){ 
         let film = {"id": id};
-        getPromise("DELETE", "../controller/films-php/delete.php", film)
+        getFetch("DELETE", "../controller/films-php/delete.php", film)
             .then(function(response) {
                 if(response.error === false)
                     reqFilmDeleteSuccess(response);

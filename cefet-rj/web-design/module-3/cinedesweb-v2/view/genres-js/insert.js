@@ -1,8 +1,9 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 
 window.onload = function() {
-    getPromise("GET", "../controller/genres-php/list.php")
+    getFetch("GET", "../controller/genres-php/list.php")
        .then(function(response){
             showErrorMsg(response.errorMsg);
        })
@@ -17,7 +18,7 @@ $sendButton.addEventListener('click', function(event) {
    let genre = {
        "description" : $descriptionInput.value
    };
-   getPromise("POST", "../controller/genres-php/insert.php", genre)
+   getFetch("POST", "../controller/genres-php/insert.php", genre)
        .then(function(response) {
            if(response.error === false)
                reqGenreInsertSuccess(response);

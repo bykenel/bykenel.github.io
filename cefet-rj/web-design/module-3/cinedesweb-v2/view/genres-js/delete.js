@@ -1,10 +1,11 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
 
 export function deleteGenre(id) {
     if(confirm('Confirma a exclusão do gênero de id '+id+'?')){ 
         let genre = {"id": id};
-        getPromise("DELETE", "../controller/genres-php/delete.php", genre)
+        getFetch("DELETE", "../controller/genres-php/delete.php", genre)
             .then(function(response) {
                 if(response.error === false)
                     reqGenreDeleteSuccess(response);

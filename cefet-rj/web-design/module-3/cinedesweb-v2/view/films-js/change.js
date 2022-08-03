@@ -1,4 +1,5 @@
-import {getPromise} from '../util-js/getPromise.js';
+//import {getPromise} from '../util-js/getPromise.js';
+import {getFetch} from '../util-js/getFetch.js'
 import {showErrorMsg} from '../util-js/msgUtil.js';
      
 const $changeButton = document.querySelector('#change');
@@ -15,7 +16,7 @@ $changeButton.addEventListener('click', function(event) {
         "rating": parseFloat($ratingInput.value),
         "genre": parseInt($genreInput.value)
     };
-    getPromise("PUT", "../controller/films-php/change.php", film)
+    getFetch("PUT", "../controller/films-php/change.php", film)
         .then(function(response){
             if (response.error === false)
                 reqFilmChangeSuccess(response);
