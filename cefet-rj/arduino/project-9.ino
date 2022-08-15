@@ -2,10 +2,12 @@
 #include <avr/pgmspace.h>
 #include <TimerOne.h>
    
+//Led Array
 int DataPin = 4; // DIN
 int ClockPin = 5; // CLK
 int LoadPin = 6; // CS/Load
 
+//LM35
 const int LM35 = A0;
 float temperature;
   
