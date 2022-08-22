@@ -12,7 +12,7 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 void setup() {
   pinMode(backLight, OUTPUT);
   lcd.begin(16, 2);
-  lcd.print("(^w^)");
+  lcd.print("INSERT TEXT HERE");
   digitalWrite(backLight, HIGH);
 }
 
