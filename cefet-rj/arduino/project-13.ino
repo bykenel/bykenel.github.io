@@ -1,7 +1,8 @@
-// v1 - Liquid Crystal Display + DHT
+// v1 - Liquid Crystal Display + Keyboard + DHT Sensor
 #include <LiquidCrystal.h>
 #include <dht.h>
 
+//Liquid Crystal Display
 const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7;
 const int backLight = 10;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
@@ -35,6 +36,7 @@ void loop(){
   Serial.print(DHT.temperature); Serial.println(" Celsius");
 }
 
+//Keyboard
 void up() {
   lcd.clear();
   lcd.setCursor(0, 0);
