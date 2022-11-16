@@ -17,6 +17,11 @@
                 $this -> atribuirFornecedor($fornecedor);
                 Produto::$numDeProdutos++;
             }
+        
+        //Método destrutor
+            public function __destruct() {
+                Produto::$numDeProdutos--;
+            }
             
         //Métodos acessores 
             //codigo
@@ -89,18 +94,29 @@
                 return Produto::$numDeProdutos;
             }
             
-            public function obterPrecoDeVenda(float $margemDeLucro):void {
-                if ($this -> validaMargemDeLucro($margemDeLucro)) {
-                    $this -> precoDeCusto * $margemDeLucro;
+            public function obterPrecoDeVenda(float $margemDeLucro):float {
+                if ($this -> validaMargemDeLucro($margemDeLucro) == true) {
+                    $precoDeVenda = $this -> precoDeCusto + ($this -> precoDeCusto * $margemDeLucro);
+                    return $precoDeVenda;
                 }
             }
 
             private function validaMargemDeLucro(float $taxa):bool {
-                if (!($taxa > 10 || $taxa < 50)) {
+                if (!($taxa >= 0.1 && $taxa <= 0.5)) {
                     echo "A margem de lucro precisa estar entre 10% e 50%";
                     exit();
                 }
                 return true;
+            }
+        
+        //Funções de visualização
+            function mostrarDados():void {
+                echo "Produto: {$this -> recuperarDescricao()} <br>
+                      Código: {$this -> recuperarCodigo()} <br> 
+                      Preço de custo: R\${$this -> recuperarPrecoDeCusto()} <br>
+                      Estoque: {$this -> recuperarEstoque()} <br>
+                      Fornecedor: {$this -> recuperarFornecedor()} <br>
+                      <hr>";
             }
     }
 ?>
