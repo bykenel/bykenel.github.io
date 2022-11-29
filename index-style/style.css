@@ -114,9 +114,13 @@ p {
     }
 
     .skills {
-        margin: auto;
         width: 100%;
         border-radius: 2%;
         font-size: 14px;
+    }
+
+    .project-text {
+        margin-right: 50px;
+        padding-bottom: 15px;
     }
 }
