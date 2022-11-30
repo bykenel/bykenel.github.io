@@ -1,5 +1,5 @@
 ﻿<?php
-    require_once('Fornecedor.php');
+    require_once('Provider.php');
     class Produto{
         private string $descricao = "";
         private float $precoDeCusto;

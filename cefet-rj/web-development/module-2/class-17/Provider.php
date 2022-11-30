@@ -1,5 +1,5 @@
 ﻿<?php
-    require_once('Endereco.php');
+    require_once('Address.php');
     class Fornecedor{
         private string $nome = "";
         private string $email = "";
