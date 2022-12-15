@@ -1,29 +1,23 @@
-<?php  
-    class Cpf {
-        //Atributos
-            private string $numero = "";
+<?php
+    class Cpf{
+        private string $numero="";
 
-        //Método construtor
-            public function __construct(string $numero) {
-                if ($this -> validaNumero($numero) == true) {
-                    //$this -  indica o endereço de memória passado
-                    $this -> numero = $numero;
-                }
-            }
+        public function __construct(string $numero){
+            if($this->validaNumeroCpf($numero)===true)
+                $this->numero = $numero;
+        }
 
-        //Métodos acessores 
-            public function recuperarNumero():string {
-                //$this -  indica o endereço de memória passado
-                return $this -> numero;
-            }
+        public function getNumero():string{
+            return $this->numero;
+        }
 
-        //Funções de validação/úteis
-            private function validaNumero(string $cpf):bool {
-                if (!(strlen($cpf) == 14 && strpos($cpf, '.') == 3 && strpos($cpf, '.', 4) == 7 && strpos($cpf, '-') == 11)) {
-                    echo "Valor inválido";
-                    exit();
-                }
-                return true;
+        //método encapsulado (privado)
+        private function validaNumeroCpf(string $numero):bool{
+            if(! (strlen($numero)==14 && strpos($numero,'.')==3 && strpos($numero,'.',4)==7 && strpos($numero,'-')==11) ){
+                echo "Número de cpf inválido. A aplicação será encerrada.<br>";
+                exit();
             }
+            return true;
+        }
     }
 ?>

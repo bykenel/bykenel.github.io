@@ -1,79 +1,64 @@
 <?php
-    require_once('Client.php');
-    class Conta {
-        //Atributos
-            private Cliente $titular;
-            private float $saldo = 0;
-            private static int $numDeContas = 0;
-        
-        //Método construtor
-            public function __construct(Cliente $titular) {
-                //$this -  indica o endereço de memória passado
-                $this -> titular = $titular;
-                Conta::$numDeContas++;
-                //self::$numDeContas++;
-            }
+    require_once("Client.php");
+    class Conta{
+        //Atributos (características)
+        private Cliente $titular;
+        private float $saldo=0;
+        //Atributo estático
+        private static int $numDeContas=0;
 
+        public static function getNumDeContas():int{
+            return Conta::$numDeContas;
+        }
+
+        //Método construtor 
+        //Uma vez criada uma conta o Cpf não pode mudar (PRINCÍPIO DA IMUTABILIDADE)
+        public function __construct(Cliente $titular){
+            $this->titular = $titular;
+            echo "Criando uma conta....<br>";
+            //Conta::$numDeContas++;
+            self::$numDeContas++;
+        }
         //Método destrutor
-            public function __destruct() {
-                Conta::$numDeContas--;
-            }
-        
-        //Métodos acessores 
-            public function recuperarTitular():object {
-                //$this -  indica o endereço de memória passado
-                return $this -> titular;
+        public function __destruct(){
+            self::$numDeContas--;
+            echo "<br/>Destruindo uma conta....<br>";
+        }
+
+        //métodos acessores
+        public function getTitular():Cliente{
+            return $this->titular;
+        }
+
+        public function getSaldo():float{
+            return $this->saldo;
+        }
+
+        //Comportamento (métodos)
+        function saca(float $valor):void{
+            if($valor>$this->saldo){
+                echo "Valor R\${$valor} alto demais para saque.<br> ";
+                return; //Early return
             }    
+            $this->saldo -= $valor;
+        }
 
-            public function recuperarSaldo():float {
-                //$this -  indica o endereço de memória passado
-                return $this -> saldo;
+        function deposita(float $valor){
+            if(! ($valor>0) ){
+                echo "Valor R\${$valor} precisa ser positivo p/ depósito.<br> ";
+                return; //Early return
             }
+            $this->saldo += $valor;
+        }
 
-        //Funções de manipulação de saldo
-            function sacar(float $valor):void{
-                if ($valor > $this -> saldo) {
-                    echo "Valor indisponível para saque";
-                    return; //early return
-                }
-                //this -  indica o endereço de memória passado
-                $this -> saldo -= $valor;
-            }
+        function transferePara(Conta $contaDestino, float $valor){
+            $this->saca($valor);
+            $contaDestino->deposita($valor);
+        }
 
-            function depositar(float $valor):void{
-                if (!($valor > 0)) {
-                    echo "O valor de depósito precisa ser positivo";
-                    return; //early return
-                }
-                //$this -  indica o endereço de memória passado
-                $this -> saldo += $valor;
-            }
-
-            function transferir(float $valor, Conta $contaDestino):void{
-                if ($valor > $this -> saldo) {
-                    echo "Valor indisponível para transferência";
-                    return; //early return
-                }
-                //$this -  indica o endereço de memória passado
-                $this -> saldo -= $valor;
-                $contaDestino -> saldo += $valor;
-            }
-
-        //Funções de validação/úteis
-            public static function obterNumDeContas():int {
-                //$this -  indica o endereço de memória passado
-                return Conta::$numDeContas;
-                //self::$numDeContas++;
-            }
-
-        //Funções de visualização
-            function mostrarDados():void{
-                //$this -  indica o endereço de memória passado
-                echo "Conta: {$this -> titular -> recuperarNome()} <br>
-                      CPF: {$this -> titular -> recuperarCpf() -> recuperarNumero()} <br>
-                      Email: {$this -> titular -> recuperarEmail()} <br>
-                      Saldo: R\${$this -> recuperarSaldo()}
-                      <hr>";
-            }
+        function mostraDados():void{
+            echo "A conta de {$this->titular->getNome()} possui o cpf 
+    {$this->getTitular()->getCpf()->getNumero()} e tem o saldo de R\${$this->saldo}<br>";
+        }
     }
 ?>

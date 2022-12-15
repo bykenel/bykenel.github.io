@@ -1,56 +1,37 @@
-<?php
-    require_once('Cpf.php');
-    class Cliente {
-        //Atributos
-            private string $nome = "";
-            private Cpf $cpf;
-            private string $email = "";
+<?php 
+    require_once "Person.php";
+    class Cliente extends Pessoa{
 
-        //Método construtor
-            public function __construct(string $nome, Cpf $cpf, string $email) {
-                //$this -  indica o endereço de memória passado
-                $this -> atribuirNome($nome);
-                $this -> cpf = $cpf ;
-                $this -> atribuirEmail($email);
-            }
+        private string $email="";
 
-        //Método destrutor
-            public function __destruct() {
-                
-            }
-        
-        //Métodos acessores 
-            public function recuperarNome():string {
-                //$this -  indica o endereço de memória passado
-                return $this -> nome;
-            }
+        public function __construct(string $nome,Cpf $cpf,Endereco $endereco, string $email=""){
+            parent::__construct($nome,$cpf,$endereco);
+            $this->setEmail($email);
+        }
 
-            public function atribuirNome(string $nome) {
-                if (strlen($nome < 6)) {
-                    echo "Valor inválido: é necessário ao menos 6 caracteres.";
-                    return; //early return
-                }
-                //$this -  indica o endereço de memória passado
-                $this -> nome = $nome;
-            }
+        /*public function setEndereco(Endereco $endereco):void{
+            $this->endereco = $endereco;
+        }*/
 
-            public function recuperarEmail():string {
-                //$this -  indica o endereço de memória passado
-                return $this -> email;
+        public function getEmail():string{
+            return $this->email;
+        }
+    
+        public function setEmail(string $email){
+            //echo "A posição do @ é: ".strpos($email,'@');
+            if(strpos($email,"@")<0){
+                echo "E-mail precisa ter ao menos o caractere @. <br/>";
+                return; //Early return
             }
-            
-            public function atribuirEmail(string $email) {
-                if (strpos($email, '@') < 0) {
-                    echo "Valor inválido: é necessário ao menos o @.";
-                    return; //early return
-                }
-                //$this -  indica o endereço de memória passado
-                $this -> email = $email;
-            }
+            //atributo nomeDoTitular = argumento $nomeDoTitular
+            $this->email = $email;
+        }
 
-            public function recuperarCpf():Cpf {
-                //$this -  indica o endereço de memória passado
-                return $this -> cpf;
-            }
+        public function exibirDados():void{
+            echo "Nome: {$this->getNome()}<br>";
+            echo "Cpf: {$this->getCpf()->getNumero()}<br>";
+            echo "Email: {$this->email}<br>";
+            echo "Endereco: {$this->getEndereco()->exibirEnderecoCompleto()}<br>";
+        }
     }
 ?>

@@ -1,5 +1,5 @@
 <?php
-    require_once('Funcionario.php');
+    require_once('Employee.php');
     $funcionario1 = new Funcionario("Nome_1",  new Cpf("123.456.789-10")); //#1
     $funcionario1 -> atribuirSalario(10000);
     $funcionario1 -> mostrarDados();
