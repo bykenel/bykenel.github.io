@@ -2,6 +2,22 @@ p {
     font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+section#profile {
+    background-image: url("./img/background.jpg");
+    background-color: #000000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-box {
+    margin: auto;
+    max-width: 30%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 2%;
+}
+
 .profile-icon {
     height: 100%;
     max-width: auto;
@@ -103,6 +119,14 @@ p {
 }
 
 @media only screen and (max-width: 700px) {
+    .profile-box {
+        margin: auto;
+        max-width: 1000%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 2%;
+    }
+    
     .btn-group {
         margin-top: 0;
         margin-right: 10px;
