@@ -84,7 +84,7 @@ section#profile {
     text-align: center;
 }
 
-.skills {
+.languages {
     margin: auto;
     width: 50%;
     padding-top: 20px;
@@ -124,7 +124,7 @@ p {
         margin-right: 10px;
     }
 
-    .skills {
+    .languages {
         width: 100%;
         border-radius: 2%;
         font-size: 14px;
