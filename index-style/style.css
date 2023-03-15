@@ -93,6 +93,12 @@ section#profile {
     font-size: 16px;
 }
 
+.glitch {
+    font-size: 24px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
 html {
     scroll-behavior: smooth;
 }
