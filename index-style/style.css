@@ -2,6 +2,12 @@ p {
     font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
 section#profile {
     background-image: url("./img/background.jpg");
     background-color: #000000;
@@ -107,6 +113,10 @@ p {
 
 .secondaryColor {
     background-color: #101010;
+}
+
+.thirdColor {
+    background-color: #0a0a0a;
 }
 
 .menuItem {
