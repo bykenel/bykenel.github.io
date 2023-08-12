@@ -1,0 +1,114 @@
+/* Styles for the header */
+header.hero.astro-J7PV25F6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 18px;
+    text-align: center;
+    border: 1px dashed grey;
+}
+
+/* Styles for the roles div */
+div.roles.astro-J7PV25F6 {
+    display: flex;
+}
+
+/* Styles for the pills */
+div.pill.astro-2QEYWK4B {
+    margin: 5px;
+}
+
+/* Styles for the main section */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    border: 1px dashed grey;
+}
+
+/* Styles for the skills class */
+.skills {
+    min-width: 40%;
+    max-width: 40%;
+}
+
+/* Styles for the box section in skills */
+section.box.skills.astro-AB4IHPZS {
+    margin: 5px;
+}
+
+/* Styles for the stack div with gap-2 class */
+div.stack.gap-2.astro-AB4IHPZS {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+/* Styles for the content paragraph inside div content */
+div.content p.astro-BBE6DXRZ {
+    margin: 12px;
+    text-align: justify; 
+}
+
+/* Styles for the buttons div */
+div.buttons {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+/* Styles for the button */
+h2.button.astro-AB4IHPZS {
+    margin: 5px;
+    display: inline-block;
+    padding: 3px 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+/* Styles for the button link */
+h2.button.astro-AB4IHPZS a {
+    color: white;
+    text-decoration: none;
+    font-size: smaller;
+}
+  
+/* Styles for the button hover effect */
+h2.button.astro-AB4IHPZS:hover {
+    background-color: #1e1e1e;
+    cursor: pointer;
+}
+
+/* Styles for the banner */
+.banner {
+    border: 1px solid black;
+}
+
+/* Styles for the image */
+img {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Styles for the footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px dashed grey;
+}
+
+/* Styles for the links in footer */
+a.astro-SZ7XMLTE {
+    margin: 2px;
+}
