@@ -1,2 +1,2 @@
-# http://8kenel.github.io
+# http://bykenel.github.io
 My personal website with some projects and stuff
