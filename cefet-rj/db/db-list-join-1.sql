@@ -1,4 +1,4 @@
--- [LISTA 4]
+-- [LISTA JOIN 1]
 USE basevendasv2;
 
 -- 1) Listar todos os clientes da cidade NOVA FRIBURGO cujo nome seja composto, comece com A e termine com A e que tenha no máximo 3 espaços.
