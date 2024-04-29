@@ -8,7 +8,7 @@
 
 
 //questão 1.2:
-    int factorial (int x) {
+    int factorial(int x) {
         int fat = 1;
         for (int i = 1; i <= x; i++) {
             fat = fat * i;
@@ -23,7 +23,7 @@
 
 
 //questão 1.4: 
-    void move (int n, char A, char B) {
+    void move(int n, char A, char B) {
         printf("\n Move disk %d from rod %c to rod %c", n, A, B);
     }
 
@@ -62,7 +62,7 @@
 
 
 //questão 1.6:
-    int fibonacci (int f[], int n) {
+    int fibonacci(int f[], int n) {
         int f[0] = 0;
         int f[1] = 1;
         
@@ -74,7 +74,7 @@
 
 
 //questão 1.7:
-    int g (int f[], int n, int k) {
+    int g(int f[], int n, int k) {
         if (k > 1)
         for (int i = 0; i < n; i++) {
             if (i < k) f[i] = i;
@@ -93,15 +93,15 @@
 
 
 //questão 1.9
-    int search (int V[], int key, int n) {
+    int search(int V[], int key, int n) {
         int inf, sup, mid;
         inf = 0;
         sup = n-1;
         while (inf <= sup) {
             mid = (inf+sup)/2;
-            if (key = vetor[mid])
+            if (key = V[mid])
                 return mid;
-            else if (key < vetor[mid])
+            else if (key < V[mid])
                 sup = mid - 1;
             else inf = mid + 1;
         }
