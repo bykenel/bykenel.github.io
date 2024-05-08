@@ -49,7 +49,7 @@
             P = (esq+dir) / 2;
             for (i = esq; V[i] < V[P]; i++);
             for (j = dir; V[j] > V[P]; j--);
-            if (i - j) trocou = troca(&V[i], &V[j]);
+            if (i < j) trocou = troca(&V[i], &V[j]);
         } while (trocou);
 
         if (P > esq) 
