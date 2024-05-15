@@ -171,7 +171,7 @@ FROM
     JOIN vendedor ve ON (cl.vendedor_id = ve.id)
 WHERE
     p.estoque > (
-        SELECT AVG(p.estoque)
+        SELECT AVG(estoque)
         FROM produto
     )
     AND SUSBTRING (v.datavenda, 1, 4) IN (2006)
