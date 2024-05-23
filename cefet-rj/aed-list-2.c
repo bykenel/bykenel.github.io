@@ -2,135 +2,168 @@
 #include <stdlib.h>
 
 /*
-void criarLista(int ***l, int n) {
+void createList(int ***list, int size)
+{
   int i;
-  *l = (int **)malloc(sizeof(int*[n]));
-  for(i=0; i < n; i = i+1)
-    (*l)[i] = NULL;
+  *list = (int **)malloc(sizeof(int *[size]));
+  for (i = 0; i < size; i = i + 1)
+    (*list)[i] = NULL;
 }
+*/
 
-int elementosNaLista(int ** l, int n) {
+int elementsInList(int **list, int size)
+{
   int i;
-  for(i=0; i < n; i = i+1)
-    if (l[i] == NULL) break;
+  for (i = 0; i < size; i = i + 1)
+    if (list[i] == NULL)
+      break;
   return i;
 }
 
-int buscarNaLista(int ** l, int n, int x) {
-  int i, busca;
-  busca = -1; //flag para erro
-  for (i=0; i < n; i = i+1) {
-    if (l[i] == NULL) i = n;
-    else if (*(l[i]) == x)
-         {
-           busca = i;
-           i = n;
-         }
+/*
+int searchInList(int **list, int size, int value)
+{
+  int i, searchResult;
+  searchResult = -1; // flag for error
+  for (i = 0; i < size; i = i + 1)
+  {
+    if (list[i] == NULL)
+      i = size;
+    else if (*(list[i]) == value)
+    {
+      searchResult = i;
+      i = size;
+    }
   }
-  return busca;
+  return searchResult;
 }
 
-int inserirNaLista(int ** l, int n, int x) {
-  int i, M;
-  M = elementosNaLista(l,n);
-  if (M<n)
-    if (buscarNaLista(l, n, x) == -1) {
-      l[M] = (int *)malloc(sizeof(int)); 
-     *l[M] = x;
+int insertInList(int **list, int size, int value)
+{
+  int i, count;
+  count = elementsInList(list, size);
+  if (count < size)
+    if (searchInList(list, size, value) == -1)
+    {
+      list[count] = (int *)malloc(sizeof(int));
+      *list[count] = value;
       return 1;
     }
-    else return 0; //Elemento já existe
-  else return -1; //Overflow
+    else
+      return 0; // Element already exists
+  else
+    return -1; // Overflow
 }
 
-int excluirDaLista(int ** l, int n, int x) {
-  int i, indice, M = elementosNaLista(l,n);
-  if (M = = 0) return -1; //Underflow
-  else { indice = buscarNaLista(l, n, x);
-         if (indice = = -1) return 0; //Elemento não existe
-         else {
-                if (indice = = n-1) { free(l[indice]);
-                                     l[indice] = NULL;
-                                    }
-                else {
-                  free(l[indice]); 		
-                  for (i = indice; i < M; i = i+1) l[i] = l[i+1];
-                  l[M-1] = NULL;        
-                }
-                return 1;
-              }
-       }
+int removeFromList(int **list, int size, int value)
+{
+  int i, index, count = elementsInList(list, size);
+  if (count == 0)
+    return -1; // Underflow
+  else
+  {
+    index = searchInList(list, size, value);
+    if (index == -1)
+      return 0; // Element does not exist
+    else
+    {
+      if (index == size - 1)
+      {
+        free(list[index]);
+        list[index] = NULL;
+      }
+      else
+      {
+        free(list[index]);
+        for (i = index; i < count; i = i + 1)
+          list[i] = list[i + 1];
+        list[count - 1] = NULL;
+      }
+      return 1;
+    }
+  }
 }
 
-void imprimirLista(int ** l, int n) {
-  int i, M;
-  for (i = 0; i < n; i = i+1)
-    if (l[i] == NULL)
+void printList(int **list, int size)
+{
+  int i, count;
+  for (i = 0; i < size; i = i + 1)
+    if (list[i] == NULL)
       printf("NULL\n");
-    else printf("%d\n", *(l[i]));
+    else
+      printf("%d\n", *(list[i]));
   printf("\n");
 }
 
-void limparLista(int ***l, int n) {
+void clearList(int ***list, int size)
+{
   int i;
-  for(i=0; i < n; i = i+1)
-    if ((*l)[i] != NULL) free((*l)[i]);
-  free(*l);
-} 
+  for (i = 0; i < size; i = i + 1)
+    if ((*list)[i] != NULL)
+      free((*list)[i]);
+  free(*list);
+}
 */
 
+// [L2] questão 2.1:
+int searchInList(int **list, int size, int value)
+{
+  int i, count, searchResult;
+  list[size] = (int *)malloc(sizeof(int)); // Allocating a new position
+  count = elementsInList(list, size);
+  *(list[count]) = value;
+  searchResult = -1; // Flag for error
+  for (i = 0; *(list[i]) != value; i = i + 1)
+    ;
+  if (i != count)
+    searchResult = i;
+  free(list[size]); // Freeing the newly allocated position
+  return searchResult;
+}
 
-//questão 2.1:
-    int buscarNaLista(int ** l, int n, int x) {
-        int i, busca;
-        l[n] = (int *)malloc(sizeof(int)); // Alocando uma nova posição
-        M = elementosNaLista(l, n);
-        *(l[M]) = x;
-        busca = -1; // Flag para erro
-        for (i = 0; *(l[i]) != x; i = i + 1);
-        if (i != M) busca = i;
-        free(l[n]); // Liberando a nova posição alocada
-        return busca;
-    }
+// [L2] questão 2.2:
+int searchInOrderedList(int **list, int size, int value)
+{ // size is the highest index in the list
+  int i, searchResult;
+  searchResult = -1; // flag for error
+  for (i = 0; (list[i] != NULL) && (*(list[i]) < value); i = i + 1)
+    ;
+  if (list[i] != NULL && *list[i] == value)
+    searchResult = i;
+  return searchResult;
+}
 
+// [L2] questão 2.3:
+int binarySearch(int **list, int size, int value)
+{
+  int lower, upper, middle, searchResult;
+  lower = 0;
+  upper = size - 1;
+  searchResult = -1; // flag for error
+  while (lower <= upper)
+  {
+    middle = (lower + upper) / 2;
+    if (list[middle] == NULL || (*list[middle]) > value)
+      upper = middle - 1;
+    else if ((*list[middle]) < value)
+      lower = middle + 1;
+    else
+      searchResult = middle;
+  }
+  return searchResult;
+}
 
-//questão 2.2:
-    int buscarNaListaOrdenada(int ** l, int n, int x) { // n é o maior índice da lista
-        int i, busca;
-        busca = -1; // flag para erro
-        for (i = 0; (l[i] != NULL) && (*(l[i]) < x); i = i + 1);
-        if (l[i] != NULL && *l[i] == x) busca = i;
-        return busca;
-    }
-
-
-//questão 2.3:
-    int buscaBinaria(int ** l, int n, int x) {
-        int inf, sup, meio, busca;
-        inf = 0;
-        sup = n - 1;
-        busca = -1; // flag para erro
-        while (inf <= sup) {
-            meio = (inf + sup) / 2;
-            if (l[meio] == NULL || (*l[meio]) > x)
-                sup = meio - 1;
-            else if ((*l[meio]) < x) inf = meio + 1;
-            else
-                busca = meio;
-        }
-        return busca;
-    }
-
-
-//questão 2.4:
-    void ordenarLista(int ** l, int n) {
-        int i, j, aux, M;
-        M = elementosNaLista(l, n);
-        for (i = M - 1; i > 1; i = i - 1)
-            for (j = 0; j < i; j = j + 1)
-                if (*l[j] > *l[j + 1]) {
-                    aux = *l[j];
-                    *l[j] = *l[j + 1];
-                    *l[j + 1] = aux;
-                }
-    }
+// [L2] questão 2.4:
+void sortList(int **list, int size)
+{
+  int i, j, temp, count;
+  count = elementsInList(list, size);
+  for (i = count - 1; i > 1; i = i - 1)
+    for (j = 0; j < i; j = j + 1)
+      if (*list[j] > *list[j + 1])
+      {
+        temp = *list[j];
+        *list[j] = *list[j + 1];
+        *list[j + 1] = temp;
+      }
+}
