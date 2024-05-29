@@ -17,7 +17,7 @@ WHERE
         'BOM JARDIM'
     );
 
--- 2)Usando a cláusula in( ), mostre todos os clientes das cidades de CORDEIRO, ITAOCARA e CANTAGALO, cujo endereco não esteja preenchido.
+-- 2) Usando a cláusula in( ), mostre todos os clientes das cidades de CORDEIRO, ITAOCARA e CANTAGALO, cujo endereco não esteja preenchido.
 SELECT cl.*
 FROM cliente cl
     JOIN bairro b ON (cl.bairro_id = b.id)
@@ -30,7 +30,7 @@ WHERE
         'CANTAGALO'
     );
 
--- 3)Usando os JOINS, de acordo com a estrutura das tabelas FORNECEDORES e PRODUTOS, construa as seguintes consultas:
+-- 3) Usando os JOINS, de acordo com a estrutura das tabelas FORNECEDORES e PRODUTOS, construa as seguintes consultas:
 -- a. Que retorne o nome do fornecedor, a descrição e o estoque do produto:
 SELECT
     f.nome AS fornecedor,

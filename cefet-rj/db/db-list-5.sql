@@ -1,7 +1,7 @@
 -- [LISTA 5]
 USE basevendasv2;
 
--- 1)Listar o nome do cliente e a data da venda de todas as vendas com valor acima da média
+-- 1) Listar o nome do cliente e a data da venda de todas as vendas com valor acima da média
 SELECT cl.nome AS cliente, CONCAT(
         SUBSTRING(v.data_venda, 9, 2), '/', SUBSTRING(v.data_venda, 6, 2), '/', SUBSTRING(v.data_venda, 1, 4)
     ) AS 'data-venda'

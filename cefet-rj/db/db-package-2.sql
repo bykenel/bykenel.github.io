@@ -1,6 +1,6 @@
 -- [PACOTE 2]
 
--- 1. Listar o nome e o valor total das vendas apenas para clientes que tiverem vendas acima da média em 2006.
+-- 1) Listar o nome e o valor total das vendas apenas para clientes que tiverem vendas acima da média em 2006.
 SELECT cl.nome AS cliente, v.valor_total AS 'valor-total'
 FROM cliente cl
     JOIN venda v ON (pv.venda_id = v.id)
@@ -11,7 +11,7 @@ WHERE
     )
     AND SUSBTRING (v.datavenda, 1, 4) IN (2006);
 
--- 2. Listar a quantidade de clientes por fornecedor.
+-- 2) Listar a quantidade de clientes por fornecedor.
 SELECT f.nome AS fornecedor, COUNT(*) AS quantidade
 FROM
     produto_vendido pv
@@ -22,7 +22,7 @@ FROM
 GROUP BY
     f.id;
 
--- 3. Listar os 10 princípios ativos mais vendidos em quantidade.
+-- 3) Listar os 10 princípios ativos mais vendidos em quantidade.
 SELECT p.principio AS 'principio-ativo', SUM(pv.quantidade) AS quantidade
 FROM produto_vendido pv
     JOIN produto p ON (pv.produto_id = p.id)
@@ -31,7 +31,7 @@ GROUP BY
 ORDER BY quantidade DESC
 LIMIT 0, 10;
 
--- 4. Listar a quantidade de vendas por bairro-cidade de produtos cujo princípio ativo seja composto e não tenham mais do que um espaço.
+-- 4) Listar a quantidade de vendas por bairro-cidade de produtos cujo princípio ativo seja composto e não tenham mais do que um espaço.
 SELECT pv.quantidade AS quantidade, CONCAT(b.nome, '-', c.nome) AS 'bairro-cidade'
 FROM
     produto_vendido pv
@@ -47,7 +47,7 @@ GROUP BY
     c.id,
     b.id;
 
--- 5. Listar os 3 vendedores que mais lucraram em vendas para os clientes de MG, RJ, SP e ES em 2006. Proibido utilizar a cláusula IN.
+-- 5) Listar os 3 vendedores que mais lucraram em vendas para os clientes de MG, RJ, SP e ES em 2006. Proibido utilizar a cláusula IN.
 SELECT ve.nome AS vendedor
 FROM
     venda v
@@ -70,7 +70,7 @@ ORDER BY SUM(
     ) DESC
 LIMIT 0, 3;
 
--- 6. Listar o valor total de vendas por mês no ano de 2006.
+-- 6) Listar o valor total de vendas por mês no ano de 2006.
 SELECT v.valor_total AS 'valor-total', SUSBTRING (v.datavenda, 6, 2) AS 'mês'
 FROM venda v
 WHERE
@@ -79,7 +79,7 @@ GROUP BY
     'mês'
 ORDER BY 'mês';
 
--- 7. Listar os 5 clientes que mais compraram produtos com preço de custo acima da média em quantidade no ano de 2006. Não me interessam clientes que compraram quantidade inferior a 50.
+-- 7) Listar os 5 clientes que mais compraram produtos com preço de custo acima da média em quantidade no ano de 2006. Não me interessam clientes que compraram quantidade inferior a 50.
 SELECT cl.nome AS cliente
 FROM
     produto_vendido pv
@@ -99,7 +99,7 @@ HAVING
 ORDER BY SUM(pv.quantidade)
 LIMIT 0, 5;
 
--- 8. Listar as 3 cidades para onde mais se vendeu em valores totais. Não se esqueça que pode haver 2 cidades com nome igual. Exemplo: Existe a cidade de Vitória no Espírito Santo e na Bahia.
+-- 8) Listar as 3 cidades para onde mais se vendeu em valores totais. Não se esqueça que pode haver 2 cidades com nome igual. Exemplo: Existe a cidade de Vitória no Espírito Santo e na Bahia.
 SELECT c.nome AS cidade, uf.sigla AS uf, SUM(v.valor_total) AS 'valor total'
 FROM
     venda v
@@ -112,7 +112,7 @@ GROUP BY
 ORDER BY 'valor-total' DESC
 LIMIT 0, 3;
 
--- 9. Listar apenas o mês em que se teve mais vendas em quantidade no ano de 2006.
+-- 9) Listar apenas o mês em que se teve mais vendas em quantidade no ano de 2006.
 SELECT SUSBTRING (v.datavenda, 6, 2) AS 'mês'
 FROM venda v
 WHERE
@@ -122,7 +122,7 @@ GROUP BY
 ORDER BY COUNT(*) DESC
 LIMIT 0, 1;
 
--- 10. Listar apenas o nome do fornecedor que teve mais vendas em valor total no ano de 2006.
+-- 10) Listar apenas o nome do fornecedor que teve mais vendas em valor total no ano de 2006.
 SELECT f.nome AS fornecedor
 FROM
     produto_vendido pv
