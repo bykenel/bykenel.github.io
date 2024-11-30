@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cerulean Task</title>
-    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
       <div class="container">
-        <h1 class="logo">⚙️Cerulean</h1>
+        <div class="logo">
+          <i data-lucide="settings"></i>
+          <h1>Cerulean</h1>
+        </div>
         <nav>
           <ul class="nav-items">
             <li><a href="#">Homepage</a></li>
@@ -98,37 +100,38 @@
         </div>
       </section>
 
-      <section class="icons">
-        <div class="container">
-          <h1>Vivamus fermentum nibh</h1>
-          <div class="icon-set">
-            <a href="#" class="icon">⬜</a>
-            <a href="#" class="icon">⬜</a>
-            <a href="#" class="icon">⬜</a>
-            <a href="#" class="icon">⬜</a>
-            <a href="#" class="icon">⬜</a>
-            <a href="#" class="icon">⬜</a>
-            <a href="#" class="icon">⬜</a>
-          </div>
-        </div>
+      <section class="tools">
+        <h2>Vivamus Fermentum nibh</h2>
+        <ul>
+          <li><i data-lucide="gavel"></i></li>
+          <li><i data-lucide="shuffle"></i></li>
+          <li><i data-lucide="key-round"></i></li>
+          <li><i data-lucide="wrench"></i></li>
+          <li><i data-lucide="scissors"></i></li>
+          <li><i data-lucide="filter"></i></li>
+          <li><i data-lucide="lock"></i></li>
+        </ul>
       </section>
     </main>
 
     <footer>
-      <div class="container">
-        <p>
-          &copy; Untitled. All rights reserved. Photos by Fotograph | Design by
-          TEMPLATED.
-        </p>
-
-        <div class="socials">
-          <a href="#" class="icon">⬜</a>
-          <a href="#" class="icon">⬜</a>
-          <a href="#" class="icon">⬜</a>
-          <a href="#" class="icon">⬜</a>
-          <a href="#" class="icon">⬜</a>
-        </div>
-      </div>
+      <p>
+        &copy Untitled. All rights reserved. I Photos by
+        <span class="footer-bold">Fotograph</span> I Design by
+        <span class="footer-bold">TEMPLATED.</span>
+      </p>
+      <ul>
+        <li><i data-lucide="twitter"></i></li>
+        <li><i data-lucide="facebook"></i></li>
+        <li><i data-lucide="dribbble"></i></li>
+        <li><i data-lucide="badge-check"></i></li>
+        <li><i data-lucide="rss"></i></li>
+      </ul>
     </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
