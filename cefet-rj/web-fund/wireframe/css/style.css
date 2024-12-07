@@ -1,0 +1,30 @@
+.header-background {
+  background-image: url(../img/vitrine.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-image {
+  width: 300px;
+  height: 200px;
+}
+
+.hall-image {
+  width: 600px;
+  height: 300px;
+}
+
+.review-image {
+  width: 70px;
+  height: 70px;
+}
+
+.footer-image {
+  width: 40px;
+  height: 40px;
+}
+
+.button {
+  width: 100px;
+  border-radius: 0;
+}
