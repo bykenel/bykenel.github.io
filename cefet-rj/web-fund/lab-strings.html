@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab-strings</title>
+  </head>
+  <body>
+    <h1>Laboratório JavaScript 2 - Strings e Datas</h1>
+
+    <div>
+      <h2>1. Inverter Frase</h2>
+      <input id="inputInvert" type="text" placeholder="Digite uma frase" />
+      <button onclick="inverterFrase()">Inverter</button>
+      <p id="outputInvert"></p>
+    </div>
+
+    <div>
+      <h2>2. Marcar Vogais</h2>
+      <input id="inputVogais" type="text" placeholder="Digite uma frase" />
+      <button onclick="marcarVogais()">Marcar Vogais</button>
+      <p id="outputVogais"></p>
+    </div>
+
+    <div>
+      <h2>3. Contar Palavras</h2>
+      <textarea
+        id="inputTexto"
+        rows="3"
+        placeholder="Digite um texto"
+      ></textarea>
+      <button onclick="contarPalavras()">Contar Palavras</button>
+      <table id="tabelaPalavras">
+        <thead>
+          <tr>
+            <th>Palavra</th>
+            <th>Ocorrências</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>4. Palavra Mais Frequente</h2>
+      <textarea
+        id="inputTextoFrequente"
+        rows="3"
+        placeholder="Digite um texto"
+      ></textarea>
+      <button onclick="encontrarPalavraMaisFrequente()">
+        Encontrar Palavra Mais Frequente
+      </button>
+      <p id="palavraMaisFrequente"></p>
+    </div>
+
+    <div>
+      <h2>5. Substituir Texto</h2>
+      <textarea
+        id="inputSubstituir"
+        rows="3"
+        placeholder="Digite um texto"
+      ></textarea>
+      <input id="procurar" type="text" placeholder="Procurar" />
+      <input id="substituir" type="text" placeholder="Substituir" />
+      <button onclick="substituirTexto()">Substituir</button>
+      <p id="outputSubstituir"></p>
+    </div>
+
+    <div>
+      <h2>6. Dias de Vida</h2>
+      <input
+        id="inputDataNascimento"
+        type="text"
+        placeholder="Digite sua data de nascimento (dd/mm/aaaa)"
+      />
+      <button onclick="calcularDiasDeVida()">Calcular Dias de Vida</button>
+      <p id="outputDiasDeVida"></p>
+    </div>
+
+    <div>
+      <h2>7. Data por Extenso</h2>
+      <input
+        id="inputDataExtenso"
+        type="text"
+        placeholder="Digite uma data (dd/mm/aaaa)"
+      />
+      <button onclick="dataPorExtenso()">Data por Extenso</button>
+      <p id="outputDataExtenso"></p>
+    </div>
+
+    <div>
+      <h2>8. Distância em Semanas</h2>
+      <input id="data1" type="text" placeholder="Data 1 (dd/mm/aaaa)" />
+      <input id="data2" type="text" placeholder="Data 2 (dd/mm/aaaa)" />
+      <button onclick="calcularSemanas()">Calcular Semanas</button>
+      <p id="outputSemanas"></p>
+    </div>
+
+    <div>
+      <h2>9. Força da Senha</h2>
+      <input id="inputSenha" type="text" placeholder="Digite uma senha" />
+      <button onclick="classificarSenha()">Classificar</button>
+      <p id="outputSenha"></p>
+    </div>
+
+    <div>
+      <h2>10. Codificar Frase (TENIS/POLAR)</h2>
+      <input id="inputCodificar" type="text" placeholder="Digite uma frase" />
+      <button onclick="codificarFrase()">Codificar</button>
+      <p id="outputCodificar"></p>
+    </div>
+
+    <script>
+      function inverterFrase() {
+        const input = document.getElementById("inputInvert").value;
+        document.getElementById("outputInvert").innerText = input
+          .split("")
+          .reverse()
+          .join("");
+      }
+
+      function marcarVogais() {
+        const input = document.getElementById("inputVogais").value;
+        const marcado = input.replace(
+          /[aeiouáéíóúãõâêîôûäëïöü]/gi,
+          "<b>$&</b>"
+        );
+        document.getElementById("outputVogais").innerHTML = marcado;
+      }
+
+      function contarPalavras() {
+        const input = document.getElementById("inputTexto").value;
+        const palavras = input
+          .toLowerCase()
+          .split(/\W+/)
+          .filter((p) => p);
+        const contagem = {};
+        palavras.forEach((p) => (contagem[p] = (contagem[p] || 0) + 1));
+
+        const tabela = document
+          .getElementById("tabelaPalavras")
+          .querySelector("tbody");
+        tabela.innerHTML = "";
+        Object.entries(contagem).forEach(([palavra, ocorrencias]) => {
+          const row = tabela.insertRow();
+          row.insertCell(0).innerText = palavra;
+          row.insertCell(1).innerText = ocorrencias;
+        });
+      }
+
+      function encontrarPalavraMaisFrequente() {
+        const input = document.getElementById("inputTextoFrequente").value;
+        const palavras = input
+          .toLowerCase()
+          .split(/\W+/)
+          .filter((p) => p);
+        const contagem = {};
+        palavras.forEach((p) => (contagem[p] = (contagem[p] || 0) + 1));
+
+        const palavraMaisFrequente = Object.entries(contagem).reduce(
+          (a, b) => (b[1] > a[1] ? b : a),
+          ["", 0]
+        );
+        document.getElementById(
+          "palavraMaisFrequente"
+        ).innerText = `Palavra mais frequente: "${palavraMaisFrequente[0]}" (${palavraMaisFrequente[1]} vezes)`;
+      }
+
+      function substituirTexto() {
+        const texto = document.getElementById("inputSubstituir").value;
+        const procurar = document.getElementById("procurar").value;
+        const substituir = document.getElementById("substituir").value;
+        document.getElementById("outputSubstituir").innerText =
+          texto.replaceAll(procurar, substituir);
+      }
+
+      function calcularDiasDeVida() {
+        const input = document.getElementById("inputDataNascimento").value;
+        const [dia, mes, ano] = input.split("/").map(Number);
+        const nascimento = new Date(ano, mes - 1, dia);
+        const hoje = new Date();
+        const dias = Math.floor((hoje - nascimento) / (1000 * 60 * 60 * 24));
+        document.getElementById(
+          "outputDiasDeVida"
+        ).innerText = `Você viveu aproximadamente ${dias} dias.`;
+      }
+
+      function dataPorExtenso() {
+        const input = document.getElementById("inputDataNascimento").value;
+        const meses = [
+          "janeiro",
+          "fevereiro",
+          "março",
+          "abril",
+          "maio",
+          "junho",
+          "julho",
+          "agosto",
+          "setembro",
+          "outubro",
+          "novembro",
+          "dezembro",
+        ];
+        const [dia, mes, ano] = input.split("/").map(Number);
+        document.getElementById("outputDataExtenso").innerText = `${dia} de ${
+          meses[mes - 1]
+        } de ${ano}`;
+      }
+
+      function calcularSemanas() {
+        const data1 = document.getElementById("data1").value;
+        const data2 = document.getElementById("data2").value;
+        const [d1, m1, a1] = data1.split("/").map(Number);
+        const [d2, m2, a2] = data2.split("/").map(Number);
+        const inicio = new Date(a1, m1 - 1, d1);
+        const fim = new Date(a2, m2 - 1, d2);
+        const semanas = Math.abs((fim - inicio) / (1000 * 60 * 60 * 24 * 7));
+        document.getElementById(
+          "outputSemanas"
+        ).innerText = `Distância: ${Math.floor(semanas)} semanas.`;
+      }
+
+      function classificarSenha() {
+        const senha = document.getElementById("inputSenha").value;
+        let nivel;
+
+        if (/^[a-z]+$/.test(senha) || /^[A-Z]+$/.test(senha)) {
+          nivel = "fraca";
+        } else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/.test(senha)) {
+          nivel = "moderada";
+        } else if (
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#!$%&*()\-=+.])[a-zA-Z\d@#!$%&*()\-=+.]+$/.test(
+            senha
+          )
+        ) {
+          nivel = "forte";
+        } else {
+          nivel = "indefinida";
+        }
+
+        const output = document.getElementById("outputSenha");
+        output.innerText = `Força da senha: ${nivel}`;
+        output.className = nivel;
+      }
+
+      function codificarFrase() {
+        const input = document.getElementById("inputCodificar").value;
+        const mapa = {
+          T: "P",
+          P: "T",
+          E: "O",
+          O: "E",
+          N: "L",
+          L: "N",
+          I: "A",
+          A: "I",
+          S: "R",
+          R: "S",
+        };
+        const codificado = input.replace(/[TENISPOLAR]/gi, (letra) => {
+          const substituicao = mapa[letra.toUpperCase()];
+          return letra === letra.toLowerCase()
+            ? substituicao.toLowerCase()
+            : substituicao;
+        });
+        document.getElementById("outputCodificar").innerText = codificado;
+      }
+    </script>
+  </body>
+</html>
