@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab-arrays</title>
+  </head>
+  <body>
+    <h1>Laboratório de Arrays</h1>
+
+    <div id="results"></div>
+
+    <script>
+      const inventors = [
+        { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
+        { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
+        { first: "Galileo", last: "Galilei", year: 1564, passed: 1642 },
+        { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
+        { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
+        { first: "Nicolaus", last: "Copernicus", year: 1473, passed: 1543 },
+        { first: "Max", last: "Planck", year: 1858, passed: 1947 },
+        { first: "Katherine", last: "Blodgett", year: 1898, passed: 1979 },
+        { first: "Ada", last: "Lovelace", year: 1815, passed: 1852 },
+        { first: "Sarah E.", last: "Goode", year: 1855, passed: 1905 },
+        { first: "Lise", last: "Meitner", year: 1878, passed: 1968 },
+        { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 },
+      ];
+
+      const data = [
+        "car",
+        "car",
+        "truck",
+        "truck",
+        "bike",
+        "walk",
+        "car",
+        "van",
+        "bike",
+        "walk",
+        "car",
+        "van",
+        "car",
+        "truck",
+      ];
+
+      const resultsDiv = document.getElementById("results");
+
+      function exibirResultado(titulo, resultado) {
+        const section = document.createElement("section");
+        const heading = document.createElement("h2");
+        heading.textContent = titulo;
+
+        const content = document.createElement("pre");
+        content.textContent = JSON.stringify(resultado, null, 2);
+
+        section.appendChild(heading);
+        section.appendChild(content);
+        resultsDiv.appendChild(section);
+      }
+
+      // Questão 1
+      function filtrarPorSeculo(inventors) {
+        const resultado = [];
+        for (let i = 0; i < inventors.length; i++) {
+          if (inventors[i].year >= 1500 && inventors[i].year < 1600) {
+            resultado.push(inventors[i]);
+          }
+        }
+        return resultado;
+      }
+      exibirResultado(
+        "1. Inventores nascidos entre 1500 e 1599",
+        filtrarPorSeculo(inventors)
+      );
+
+      // Questão 2
+      function obterNomes(inventors) {
+        const resultado = [];
+        for (let i = 0; i < inventors.length; i++) {
+          resultado.push(inventors[i].first + " " + inventors[i].last);
+        }
+        return resultado;
+      }
+      exibirResultado("2. Nomes dos inventores", obterNomes(inventors));
+
+      // Questão 3
+      function ordenarPorNascimento(inventors) {
+        const resultado = inventors.slice();
+        for (let i = 0; i < resultado.length; i++) {
+          for (let j = i + 1; j < resultado.length; j++) {
+            if (resultado[i].year > resultado[j].year) {
+              const temp = resultado[i];
+              resultado[i] = resultado[j];
+              resultado[j] = temp;
+            }
+          }
+        }
+        return resultado;
+      }
+      exibirResultado(
+        "3. Inventores ordenados por data de nascimento",
+        ordenarPorNascimento(inventors)
+      );
+
+      // Questão 4
+      function somarAnosVividos(inventors) {
+        let total = 0;
+        for (let i = 0; i < inventors.length; i++) {
+          total += inventors[i].passed - inventors[i].year;
+        }
+        return total;
+      }
+      exibirResultado(
+        "4. Anos vividos por todos os inventores",
+        somarAnosVividos(inventors)
+      );
+
+      // Questão 5
+      function ordenarPorAnosVividos(inventors) {
+        const resultado = inventors.slice();
+        for (let i = 0; i < resultado.length; i++) {
+          for (let j = i + 1; j < resultado.length; j++) {
+            const anosVividosA = resultado[i].passed - resultado[i].year;
+            const anosVividosB = resultado[j].passed - resultado[j].year;
+            if (anosVividosA < anosVividosB) {
+              const temp = resultado[i];
+              resultado[i] = resultado[j];
+              resultado[j] = temp;
+            }
+          }
+        }
+        return resultado;
+      }
+      exibirResultado(
+        "5. Inventores ordenados pelos anos vividos",
+        ordenarPorAnosVividos(inventors)
+      );
+
+      // Questão 6
+      function removerDuplicados(array) {
+        const resultado = [];
+        for (let i = 0; i < array.length; i++) {
+          if (!resultado.includes(array[i])) {
+            resultado.push(array[i]);
+          }
+        }
+        return resultado;
+      }
+      exibirResultado("6. Lista sem redundâncias", removerDuplicados(data));
+    </script>
+  </body>
+</html>
