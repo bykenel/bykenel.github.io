@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Previsão do Tempo</title>
+  </head>
+  <body>
+    <h1>Previsão do Tempo</h1>
+    <form id="weatherForm">
+      <label for="city">Digite a Cidade:</label>
+      <input type="text" id="city" name="city" required />
+      <button type="submit">Obter Previsão</button>
+    </form>
+    <h2>Clima Local:</h2>
+    <div id="results"></div>
+
+    <script>
+      document
+        .getElementById("weatherForm")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const cidade = document.getElementById("city").value;
+          const resultadosDiv = document.getElementById("results");
+          resultadosDiv.innerHTML = "";
+
+          try {
+            const resposta = await fetch(
+              `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&units=metric&appid=34789db6d00347dcbf6b239dcceb99b5`
+            );
+            if (!resposta.ok) {
+              throw new Error("Cidade não encontrada");
+            }
+
+            const dados = await resposta.json();
+
+            const climaFiltrado = dados.list.filter(
+              (item) => item.main.temp > 35 || item.main.temp < 5
+            );
+
+            if (climaFiltrado.length === 0) {
+              resultadosDiv.innerHTML =
+                "<p>Não foram encontradas condições climáticas extremas.</p>";
+            } else {
+              climaFiltrado.forEach((item) => {
+                const condicao = document.createElement("div");
+                condicao.innerHTML = `
+                            <p><strong>Data:</strong> ${new Date(
+                              item.dt * 1000
+                            ).toLocaleString()}</p>
+                            <p><strong>Temperatura:</strong> ${
+                              item.main.temp
+                            } °C</p>
+                            <p><strong>Umidade:</strong> ${
+                              item.main.humidity
+                            }%</p>
+                            <p><strong>Condição:</strong> ${
+                              item.weather[0].description
+                            }</p>
+                            <hr>
+                        `;
+                resultadosDiv.appendChild(condicao);
+              });
+            }
+          } catch (erro) {
+            resultadosDiv.innerHTML = `<p>Erro: ${erro.message}</p>`;
+          }
+        });
+    </script>
+  </body>
+</html>

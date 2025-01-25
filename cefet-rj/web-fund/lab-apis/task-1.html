@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Moedas</title>
+  </head>
+  <body>
+    <h1>Conversor de Moedas</h1>
+    <form id="formConversor" onsubmit="realizarConversao(event)">
+      <label for="valor">Valor:</label>
+      <input type="number" id="valor" /><br />
+
+      <label for="moedaInicial">Moedas Iniciais:</label>
+      <select id="moedaInicial" multiple required>
+        <option value="USD">Dólar Americano (USD)</option>
+        <option value="EUR">Euro (EUR)</option>
+        <option value="GBP">Libra Esterlina (GBP)</option>
+        <option value="JPY">Iene (JPY)</option>
+        <option value="BRL">Real Brasileiro (BRL)</option></select
+      ><br />
+
+      <label for="moedasDestino">Moedas de Destino:</label>
+      <select id="moedasDestino" multiple required>
+        <option value="USD">Dólar Americano (USD)</option>
+        <option value="EUR">Euro (EUR)</option>
+        <option value="GBP">Libra Esterlina (GBP)</option>
+        <option value="JPY">Iene (JPY)</option>
+        <option value="BRL">Real Brasileiro (BRL)</option></select
+      ><br />
+
+      <button type="submit">Converter</button>
+    </form>
+
+    <h2>Resultados</h2>
+    <div id="resultado"></div>
+
+    <script>
+      async function converterMoeda(valor, moedasIniciais, moedasDestino) {
+        try {
+          const apiUrl = `https://v6.exchangerate-api.com/v6/935c2dce80544069de9d8977/latest/${moedasIniciais[0]}`;
+          const resposta = await fetch(apiUrl);
+
+          if (!resposta.ok) {
+            throw new Error("Erro ao buscar as taxas de câmbio");
+          }
+
+          const dados = await resposta.json();
+          const taxas = dados.conversion_rates;
+
+          return moedasDestino.flatMap((moedaDestino) =>
+            moedasIniciais.map((moedaInicial) => ({
+              moedaInicial,
+              moedaDestino,
+              valorConvertido: (valor * taxas[moedaDestino]).toFixed(2),
+            }))
+          );
+        } catch (erro) {
+          console.error(erro.message);
+          return [];
+        }
+      }
+
+      async function realizarConversao(event) {
+        event.preventDefault();
+        const valor = parseFloat(document.getElementById("valor").value);
+        const moedasIniciais = Array.from(
+          document.getElementById("moedaInicial").selectedOptions
+        ).map((option) => option.value);
+        const moedasDestino = Array.from(
+          document.getElementById("moedasDestino").selectedOptions
+        ).map((option) => option.value);
+
+        const resultados = await converterMoeda(
+          valor,
+          moedasIniciais,
+          moedasDestino
+        );
+
+        const containerResultados = document.getElementById("resultado");
+        containerResultados.innerHTML = "";
+        if (resultados.length > 0) {
+          resultados.forEach((resultado) => {
+            const p = document.createElement("p");
+            p.textContent = `${valor} ${resultado.moedaInicial} = ${resultado.valorConvertido} ${resultado.moedaDestino}`;
+            containerResultados.appendChild(p);
+          });
+        } else {
+          containerResultados.textContent =
+            "Não foi possível realizar a conversão.";
+        }
+      }
+    </script>
+  </body>
+</html>

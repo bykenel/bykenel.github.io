@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca de Filmes</title>
+  </head>
+  <body>
+    <h1>Buscar Filmes</h1>
+    <form id="form-filmes">
+      <label for="titulo">Título do Filme:</label>
+      <input type="text" id="titulo" name="titulo" required />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div id="lista-filmes"></div>
+
+    <script>
+      document
+        .getElementById("form-filmes")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const titulo = document.getElementById("titulo").value;
+          const listaFilmesDiv = document.getElementById("lista-filmes");
+
+          listaFilmesDiv.innerHTML = "";
+
+          try {
+            const response = await fetch(
+              `http://www.omdbapi.com/?s=${titulo}&apikey=35472a1e`
+            );
+            const dados = await response.json();
+
+            if (dados.Response === "True") {
+              const filmesFiltrados = dados.Search.filter(
+                (filme) => parseInt(filme.Year) > 2000
+              );
+
+              filmesFiltrados.forEach((filme) => {
+                const filmeDiv = document.createElement("div");
+                filmeDiv.className = "filme";
+                filmeDiv.innerHTML = `
+                  <h2>${filme.Title}</h2>
+                  <p><strong>Ano:</strong> ${filme.Year}</p>
+                  <p><strong>IMDb ID:</strong> ${filme.imdbID}</p>
+                `;
+                listaFilmesDiv.appendChild(filmeDiv);
+              });
+            } else {
+              listaFilmesDiv.innerHTML = "<p>Nenhum filme encontrado.</p>";
+            }
+          } catch (erro) {
+            console.error("Erro ao buscar filmes:", erro);
+            listaFilmesDiv.innerHTML =
+              "<p>Ocorreu um erro ao buscar os dados dos filmes.</p>";
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Biblioteca</title>
+  </head>
+  <body>
+    <h1>Sistema de Biblioteca</h1>
+
+    <h2>Adicionar Livro</h2>
+    <form id="formAdicionar">
+      <input type="text" id="titulo" placeholder="Título do livro" required />
+      <input type="text" id="autor" placeholder="Autor do livro" required />
+      <button type="button" onclick="adicionarLivroNoDom()">Adicionar</button>
+    </form>
+
+    <h2>Livros Disponíveis</h2>
+    <ul id="livrosDisponiveis" class="livro-lista"></ul>
+
+    <h2>Livros Emprestados</h2>
+    <ul id="livrosEmprestados" class="livro-lista"></ul>
+
+    <h2>Total de Empréstimos</h2>
+    <p id="totalEmprestimos">Total de empréstimos realizados: 0</p>
+
+    <h2>Emprestar Livro</h2>
+    <input
+      type="text"
+      id="tituloEmprestar"
+      placeholder="Título do livro para emprestar"
+    />
+    <button type="button" onclick="emprestarLivro()">Emprestar</button>
+
+    <script>
+      class Livro {
+        constructor(titulo, autor) {
+          this.titulo = titulo;
+          this.autor = autor;
+          this.disponivel = true;
+          this.emprestimos = 0;
+        }
+
+        atualizarDisponibilidade(disponivel) {
+          this.disponivel = disponivel;
+        }
+
+        emprestar() {
+          if (this.disponivel) {
+            this.disponivel = false;
+            this.emprestimos++;
+          } else {
+            alert(
+              `O livro "${this.titulo}" não está disponível para empréstimo.`
+            );
+          }
+        }
+      }
+
+      let biblioteca = [];
+
+      function adicionarLivro(titulo, autor) {
+        const novoLivro = new Livro(titulo, autor);
+        biblioteca.push(novoLivro);
+      }
+
+      function listarLivrosDisponiveis() {
+        const livrosDisponiveis = biblioteca.filter(
+          (livro) => livro.disponivel
+        );
+        return livrosDisponiveis;
+      }
+
+      function listarLivrosEmprestados() {
+        const livrosEmprestados = biblioteca
+          .filter((livro) => !livro.disponivel)
+          .map((livro) => livro.titulo);
+        return livrosEmprestados;
+      }
+
+      function calcularTotalEmprestimos() {
+        const totalEmprestimos = biblioteca.reduce(
+          (acc, livro) => acc + livro.emprestimos,
+          0
+        );
+        return totalEmprestimos;
+      }
+
+      function adicionarLivroNoDom() {
+        const titulo = document.getElementById("titulo").value;
+        const autor = document.getElementById("autor").value;
+
+        if (titulo && autor) {
+          adicionarLivro(titulo, autor);
+          alert(`Livro "${titulo}" adicionado com sucesso!`);
+          exibirBiblioteca();
+        } else {
+          alert("Por favor, insira título e autor do livro.");
+        }
+      }
+
+      function exibirBiblioteca() {
+        const listaLivrosDisponiveis = listarLivrosDisponiveis();
+        const listaLivrosEmprestados = listarLivrosEmprestados();
+        const totalEmprestimos = calcularTotalEmprestimos();
+
+        const livrosDisponiveisHTML = listaLivrosDisponiveis
+          .map((livro) => `<li>${livro.titulo} - ${livro.autor}</li>`)
+          .join("");
+        document.getElementById("livrosDisponiveis").innerHTML =
+          livrosDisponiveisHTML;
+
+        const livrosEmprestadosHTML = listaLivrosEmprestados
+          .map((livro) => `<li>${livro}</li>`)
+          .join("");
+        document.getElementById("livrosEmprestados").innerHTML =
+          livrosEmprestadosHTML;
+
+        document.getElementById(
+          "totalEmprestimos"
+        ).innerText = `Total de empréstimos realizados: ${totalEmprestimos}`;
+      }
+
+      function emprestarLivro() {
+        const titulo = document.getElementById("tituloEmprestar").value;
+        const livro = biblioteca.find((livro) => livro.titulo === titulo);
+
+        if (livro) {
+          livro.emprestar();
+          exibirBiblioteca();
+        } else {
+          alert(`Livro "${titulo}" não encontrado na biblioteca.`);
+        }
+      }
+    </script>
+  </body>
+</html>
