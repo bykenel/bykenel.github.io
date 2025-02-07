@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>labJQuery, 04</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: rgb(32, 32, 32);
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      background-color: rgb(42, 42, 42);
+    }
+
+    .container > nav h3 {
+      color: #fff;
+      margin: 50px 0 20px 0;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      text-align: center;
+    }
+    .container > nav {
+      float: left;
+      width: 30%;
+      padding: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 50px;
+    }
+
+    nav li {
+      padding: 30px;
+      text-align: center;
+      border-bottom: 1px solid rgb(59, 59, 59);
+    }
+
+    nav a {
+      padding: 30px;
+      width: 100%;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: rgb(149, 149, 149);
+    }
+
+    nav li:hover {
+      background-color: rgb(41, 128, 185);
+    }
+
+    nav li:hover a {
+      color: #fff;
+    }
+
+    .content {
+      border-top: solid 5px rgb(41, 128, 185);
+      background-color: #fff;
+      float: left;
+      width: 70%;
+      padding: 15px;
+      height: 100vh;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <nav>
+        <h3>Atividades</h3>
+        <ul>
+          <li><a href="task-1.html">01. Livraria</a></li>
+          <li><a href="task-2.html">02. Cafeteria</a></li>
+          <li><a href="task-3.html">03. Receitas</a></li>
+          <li><a href="task-4.html">04. CEP</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <h1>CEP</h1>
+        <h3>AJAX com envio de requisição</h3>
+        <p>
+          Nesta atividade, o usuário fará uma requisição AJAX para ter o
+          preenchimento automático de endereço.
+        </p>
+        <label>Entre com o CEP</label>
+        <input id="cep" type="text" maxlength="9" placeholder="00000-000" />
+        <button id="buscaEndereco">Buscar Endereço</button>
+
+        <div id="resultado">
+          <h3>Endereço:</h3>
+          <div class="endereco">
+            <p class="endereco-logradouro"></p>
+            <p class="endereco-bairro"></p>
+            <p class="endereco-cidade"></p>
+            <p class="endereco-estado"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("buscaEndereco")
+          .addEventListener("click", function () {
+            const cep = document.getElementById("cep").value.replace("-", "");
+            if (cep.length === 8 && !isNaN(cep)) {
+              fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((response) => response.json())
+                .then((data) => {
+                  if (!data.erro) {
+                    document.querySelector(
+                      ".endereco-logradouro"
+                    ).textContent = `Logradouro: ${data.logradouro}`;
+                    document.querySelector(
+                      ".endereco-bairro"
+                    ).textContent = `Bairro: ${data.bairro}`;
+                    document.querySelector(
+                      ".endereco-cidade"
+                    ).textContent = `Cidade: ${data.localidade}`;
+                    document.querySelector(
+                      ".endereco-estado"
+                    ).textContent = `Estado: ${data.uf}`;
+                  } else {
+                    alert("CEP não encontrado!");
+                  }
+                })
+                .catch((error) =>
+                  console.error("Erro ao buscar o endereço:", error)
+                );
+            } else {
+              alert("Digite um CEP válido!");
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

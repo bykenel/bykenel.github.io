@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>labJQuery, 03</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background-color: rgb(32, 32, 32);
+      }
+
+      .container {
+        width: 90%;
+        margin: 0 auto;
+        background-color: rgb(42, 42, 42);
+      }
+
+      .container > nav h3 {
+        color: #fff;
+        margin: 50px 0 20px 0;
+        text-transform: uppercase;
+        font-size: 1.3em;
+        text-align: center;
+      }
+      .container > nav {
+        float: left;
+        width: 30%;
+        padding: 0;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 50px;
+      }
+
+      nav li {
+        padding: 30px;
+        text-align: center;
+        border-bottom: 1px solid rgb(59, 59, 59);
+      }
+
+      nav a {
+        padding: 30px;
+        width: 100%;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: rgb(149, 149, 149);
+      }
+
+      nav li:hover {
+        background-color: rgb(41, 128, 185);
+      }
+
+      nav li:hover a {
+        color: #fff;
+      }
+
+      .content {
+        border-top: solid 5px rgb(41, 128, 185);
+        background-color: #fff;
+        float: left;
+        width: 70%;
+        padding: 15px;
+      }
+
+      .receitas {
+        margin-top: 20px;
+      }
+
+      .receita {
+        background: #f8f8f8;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .receita img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <h3>Atividades</h3>
+        <ul>
+          <li><a href="task-1.html">01. Livraria</a></li>
+          <li><a href="task-2.html">02. Cafeteria</a></li>
+          <li><a href="task-3.html">03. Receitas</a></li>
+          <li><a href="task-4.html">04. CEP</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <h1>Receitas</h1>
+        <p>
+          Esta atividade tem como objetivo trabalhar com a carga de uma página a
+          partir de lista de terceiros. No nosso exemplo, há uma lista
+          disponível em
+          https://rafaelescalfoni.github.io/desenv_web/receitas.json para o
+          exemplo, que deverá utilizar ajax.
+        </p>
+        <p>Você deve carregar uma lista de receitas na página.</p>
+        <div class="receitas"></div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://rafaelescalfoni.github.io/desenv_web/receitas.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const receitasContainer = document.querySelector(".receitas");
+            data.forEach((receita) => {
+              const receitaDiv = document.createElement("div");
+              receitaDiv.classList.add("receita");
+              receitaDiv.innerHTML = `
+                              <h2>${receita.nome}</h2>
+                              <p>${receita.descricao}</p>
+                              <img src="${receita.foto}" alt="${
+                receita.nome
+              }" width="200">
+                              <h3>Ingredientes:</h3>
+                              <ul>${receita.ingredientes
+                                .map((ing) => `<li>${ing}</li>`)
+                                .join("")}</ul>
+                              <h3>Preparo:</h3>
+                              <ol>${receita.preparo
+                                .map((passo) => `<li>${passo}</li>`)
+                                .join("")}</ol>
+                          `;
+              receitasContainer.appendChild(receitaDiv);
+            });
+          })
+          .catch((error) => console.error("Erro ao carregar receitas:", error));
+      });
+    </script>
+  </body>
+</html>

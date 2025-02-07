@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>labJQuery, 02</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: rgb(32, 32, 32);
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      background-color: rgb(42, 42, 42);
+    }
+
+    .container > nav h3 {
+      color: #fff;
+      margin: 50px 0 20px 0;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      text-align: center;
+    }
+    .container > nav {
+      float: left;
+      width: 30%;
+      padding: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 50px;
+    }
+
+    nav li {
+      padding: 30px;
+      text-align: center;
+      border-bottom: 1px solid rgb(59, 59, 59);
+    }
+
+    nav a {
+      padding: 30px;
+      width: 100%;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: rgb(149, 149, 149);
+    }
+
+    nav li:hover {
+      background-color: rgb(41, 128, 185);
+    }
+
+    nav li:hover a {
+      color: #fff;
+    }
+
+    .content {
+      border-top: solid 5px rgb(41, 128, 185);
+      background-color: #fff;
+      float: left;
+      width: 70%;
+      padding: 15px;
+      height: 100vh;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <nav>
+        <h3>Atividades</h3>
+        <ul>
+          <li><a href="task-1.html">01. Livraria</a></li>
+          <li><a href="task-2.html">02. Cafeteria</a></li>
+          <li><a href="task-3.html">03. Receitas</a></li>
+          <li><a href="task-4.html">04. CEP</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <h1>Cafeteria</h1>
+        <p>
+          Nesta atividade, trabalharemos a manipulação do DOM utilizando
+          Javascript/JQuery.
+        </p>
+        <p>
+          Sua tarefa é desenvolver um cardápio eletrônico. Os itens de menu
+          devem ser carregados dinamicamente a partir de uma lista. A intenção é
+          facilitar a organização e atualização do menu. Por questões de
+          simplificação, o menu deve ser carregado a partir do array dado no
+          script atividade02.js.
+        </p>
+        <h2>Cardápio</h2>
+        <ul id="cardapio"></ul>
+        <h2>Pedidos</h2>
+        <ul id="pedidos"></ul>
+        <h2 id="valorTotal">Total - R$ 0,00</h2>
+      </div>
+    </div>
+
+    <script>
+      var Produto = function (id, nome, categoria, img, valorUnitario) {
+        this.id = id;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.foto = img;
+        this.valorUnitario = valorUnitario;
+      };
+
+      function pesquisaPorId(vetor, objId) {
+        return vetor.find(function (item) {
+          return item.id == objId;
+        });
+      }
+
+      var cardapio = [
+        new Produto(
+          1,
+          "Capuccino",
+          "Bebidas Quentes",
+          "https://rafaelescalfoni.github.io/desenv_web/img/capuccino.png",
+          7
+        ),
+        new Produto(
+          2,
+          "Espresso",
+          "Bebidas Quentes",
+          "https://rafaelescalfoni.github.io/desenv_web/img/espresso.png",
+          4
+        ),
+        new Produto(
+          3,
+          "Frapuccino",
+          "Bebidas Quentes",
+          "https://rafaelescalfoni.github.io/desenv_web/img/frapuccino.png",
+          8
+        ),
+        new Produto(
+          4,
+          "Chococcino",
+          "Bebidas Quentes",
+          "https://rafaelescalfoni.github.io/desenv_web/img/chococcino.png",
+          7
+        ),
+        new Produto(
+          5,
+          "Chocolate Quente",
+          "Bebidas Quentes",
+          "https://rafaelescalfoni.github.io/desenv_web/img/chocolate_quente.png",
+          10
+        ),
+        new Produto(
+          6,
+          "Frapê",
+          "Bebidas Frias",
+          "https://rafaelescalfoni.github.io/desenv_web/img/frape.png",
+          12
+        ),
+        new Produto(
+          7,
+          "Suco de Laranja",
+          "Bebidas Frias",
+          "https://rafaelescalfoni.github.io/desenv_web/img/suco_laranja.png",
+          10
+        ),
+        new Produto(
+          8,
+          "Açaí",
+          "Doces",
+          "https://rafaelescalfoni.github.io/desenv_web/img/acai.png",
+          12
+        ),
+        new Produto(
+          9,
+          "Bolo de Laranja",
+          "Doces",
+          "https://rafaelescalfoni.github.io/desenv_web/img/bolo_laranja.png",
+          8
+        ),
+      ];
+
+      $(function () {
+        var total = 0;
+
+        $.each(cardapio, function (ind, item) {
+          var itemLista = $("<li>");
+          itemLista.attr("id", item.id);
+          itemLista.text(`${item.nome} - R$ ${item.valorUnitario.toFixed(2)}`);
+          $("#cardapio").append(itemLista);
+        });
+
+        $("#cardapio").on("click", "li", function () {
+          var itemEscolhido = pesquisaPorId(
+            cardapio,
+            parseInt($(this).attr("id"))
+          );
+          total += itemEscolhido.valorUnitario;
+
+          var itemPedido = $("<li>");
+          itemPedido.text(
+            `${itemEscolhido.nome} - R$ ${itemEscolhido.valorUnitario.toFixed(
+              2
+            )}`
+          );
+          $("#pedidos").append(itemPedido);
+
+          $("#valorTotal").text(`Total - R$ ${total.toFixed(2)}`);
+        });
+      });
+    </script>
+  </body>
+</html>

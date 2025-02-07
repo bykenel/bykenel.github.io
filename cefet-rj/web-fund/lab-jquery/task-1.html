@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>labJQuery, 01</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: rgb(32, 32, 32);
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      background-color: rgb(42, 42, 42);
+    }
+
+    .container > nav h3 {
+      color: #fff;
+      margin: 50px 0 20px 0;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      text-align: center;
+    }
+    .container > nav {
+      float: left;
+      width: 30%;
+      padding: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 50px;
+    }
+
+    nav li {
+      padding: 30px;
+      text-align: center;
+      border-bottom: 1px solid rgb(59, 59, 59);
+    }
+
+    nav a {
+      padding: 30px;
+      width: 100%;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: rgb(149, 149, 149);
+    }
+
+    nav li:hover {
+      background-color: rgb(41, 128, 185);
+    }
+
+    nav li:hover a {
+      color: #fff;
+    }
+
+    .content {
+      border-top: solid 5px rgb(41, 128, 185);
+      background-color: #fff;
+      float: left;
+      width: 70%;
+      padding: 15px;
+      height: 100vh;
+    }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      button {
+        margin-top: 10px;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <nav>
+		<h3> Atividades</h3>
+		<ul>
+			<li><a href="task-1.html">01. Livraria</a></li>
+			<li><a href="task-2.html">02. Cafeteria</a></li>
+			<li><a href="task-3.html">03. Receitas</a></li>
+			<li><a href="task-4.html">04. CEP</a></li>
+		</ul>
+	</nav>
+	<div class="content">
+
+		<h1>Livraria do Cefet</h1>
+		<p>
+			Nesta atividade, você deve desenvolver uma tela de cadastro de livros para uma biblioteca. Sua interface organizar em uma tabela todos os livros digitados no formulário para uma posterior submissão em bloco.
+		</p>
+		<p>
+			Os livros digitados devem ser colocados em um array de "Livro"s, como definido no código-fonte deste exercício:
+			<pre>
+{
+"titulo":  titulo,
+"descricao": descricao,
+"genero": genero,
+"autor": autor
+};
+			</pre>
+		</p>
+		<p>
+			Seus dados devem ser enviados numa requisição HTTP com método POST para a URL http://httpbin.org/post
+		</p>
+        <fieldset>
+          <legend>Cadastro de Livros</legend>
+          <label>Título</label>
+          <input
+            type="text"
+            id="titulo"
+            placeholder="Digite o título do livro"
+          />
+          <br />
+          <label>Descrição</label>
+          <textarea
+            id="descricao"
+            placeholder="Digite uma descricao para o livro"
+          ></textarea>
+          <br />
+          <label>Autores</label>
+          <input
+            type="text"
+            id="autores"
+            placeholder="Digite os autores da obra"
+          />
+          <br />
+          <label>Estilo</label>
+          <input
+            type="text"
+            id="estilo"
+            placeholder="Digite o estilo do livro"
+          />
+          <br />
+          <button id="adicionar">Adicionar</button>
+          <button id="excluir">Limpar</button>
+        </fieldset>
+        <table id="acervo">
+          <tr>
+            <th>Título</th>
+            <th>Autores</th>
+            <th>Estilo</th>
+            <th>Descrição</th>
+            <th></th>
+          </tr>
+        </table>
+        <button id="apagarAcervo">Apagar</button>
+        <button id="enviar">Enviar</button>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        let livros = [];
+        $("#adicionar").click(function () {
+          let titulo = $("#titulo").val().trim();
+          let descricao = $("#descricao").val().trim();
+          let autores = $("#autores").val().trim();
+          let estilo = $("#estilo").val().trim();
+          if (
+            titulo === "" ||
+            descricao === "" ||
+            autores === "" ||
+            estilo === ""
+          ) {
+            alert("Preencha todos os campos antes de adicionar.");
+            return;
+          }
+          let livro = { titulo, descricao, genero: estilo, autor: autores };
+          livros.push(livro);
+          $("#acervo").append(`
+            <tr>
+              <td>${titulo}</td>
+              <td>${autores}</td>
+              <td>${estilo}</td>
+              <td>${descricao}</td>
+              <td><button class="remover">Remover</button></td>
+            </tr>
+          `);
+          $("#titulo, #descricao, #autores, #estilo").val("");
+        });
+        $("#acervo").on("click", ".remover", function () {
+          let index = $(this).closest("tr").index() - 1;
+          livros.splice(index, 1);
+          $(this).closest("tr").remove();
+        });
+        $("#apagarAcervo").click(function () {
+          livros = [];
+          $("#acervo tr:not(:first)").remove();
+        });
+        $("#excluir").click(function () {
+          $("#titulo, #descricao, #autores, #estilo").val("");
+        });
+        $("#enviar").click(function () {
+          if (livros.length === 0) {
+            alert("Não há livros para enviar.");
+            return;
+          }
+          $.ajax({
+            url: "http://httpbin.org/post",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ livros }),
+            success: function (response) {
+              alert("Dados enviados com sucesso!");
+              console.log(response);
+            },
+            error: function () {
+              alert("Erro ao enviar os dados.");
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
