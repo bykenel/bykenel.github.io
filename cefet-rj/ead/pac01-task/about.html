@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LegendsDatabase > Sobre a API</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h1,
+      h2,
+      p,
+      ul,
+      pre,
+      code,
+      table {
+        max-width: 800px;
+        margin: 1.5rem auto;
+      }
+
+      h1 {
+        color: var(--primary-color);
+      }
+
+      code,
+      pre {
+        background-color: #2e2e2e;
+        padding: 0.5rem;
+        border-radius: 5px;
+        display: block;
+        color: #caa0ff;
+        overflow-x: auto;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+
+      th,
+      td {
+        padding: 1rem;
+        text-align: left;
+      }
+
+      th {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">LegendsDatabase</div>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="list.html">Listar Lendas</a></li>
+        <li><a href="post.html">Criar Lenda</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Sobre a API CRUD CRUD</h1>
+
+      <p>
+        Este projeto utiliza a <strong>API CrudCrud</strong> para armazenar
+        personagens de forma simples e rápida.
+      </p>
+
+      <h2>O que é a CrudCrud?</h2>
+      <p>
+        CrudCrud é uma API REST gratuita que permite criar, listar, editar e
+        excluir recursos facilmente. Ela é ideal para prototipagem rápida,
+        testes de aplicações, projetos pessoais, tutoriais e aplicações simples
+        em produção.
+      </p>
+
+      <h2>Como funciona?</h2>
+      <p>
+        Cada entidade criada recebe automaticamente um campo único chamado
+        <strong>_id</strong>, que é utilizado para leitura, atualização ou
+        exclusão individual.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Método</th>
+            <th>Recurso</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>POST</strong></td>
+            <td><code>/&lt;recurso&gt;</code></td>
+            <td>Cria uma nova entidade com os dados em JSON</td>
+          </tr>
+          <tr>
+            <td><strong>GET</strong></td>
+            <td><code>/&lt;recurso&gt;</code></td>
+            <td>Retorna todas as entidades do recurso</td>
+          </tr>
+          <tr>
+            <td><strong>GET</strong></td>
+            <td><code>/&lt;recurso&gt;/&lt;id&gt;</code></td>
+            <td>Retorna uma entidade específica</td>
+          </tr>
+          <tr>
+            <td><strong>PUT</strong></td>
+            <td><code>/&lt;recurso&gt;/&lt;id&gt;</code></td>
+            <td>Atualiza uma entidade com base no ID</td>
+          </tr>
+          <tr>
+            <td><strong>DELETE</strong></td>
+            <td><code>/&lt;recurso&gt;/&lt;id&gt;</code></td>
+            <td>Exclui uma entidade com base no ID</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Sobre o Endpoint</h2>
+      <p>
+        Ao iniciar o projeto, um endpoint REST exclusivo é gerado
+        automaticamente para você pela CrudCrud.
+      </p>
+      <p>
+        Esse endpoint é usado como base para todas as requisições e deve ser
+        combinado com o nome do recurso desejado, por exemplo:
+      </p>
+      <code>https://crudcrud.com/api/&lt;seu-endpoint&gt;/personagens</code>
+
+      <p>
+        ⚠️ <strong>Atenção:</strong> esse endpoint tem duração de
+        <strong>24 horas</strong> e expira automaticamente após esse período.
+        Sempre que necessário, gere um novo endpoint no site da
+        <a href="https://crudcrud.com/" target="_blank">CrudCrud</a>.
+      </p>
+
+      <h2>Exemplo de JSON</h2>
+      <p>Um exemplo de personagem que pode ser enviado:</p>
+      <pre>
+        {
+        "nome": "Thalion",
+        "classe": "Ranger",
+        "nivel": 5
+        }</pre
+      >
+
+      <p>
+        Para mais informações, acesse a
+        <a href="https://crudcrud.com/" target="_blank"
+          >documentação oficial da CrudCrud</a
+        >.
+      </p>
+    </main>
+  </body>
+</html>

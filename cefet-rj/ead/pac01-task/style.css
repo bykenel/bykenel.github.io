@@ -1,0 +1,86 @@
+:root {
+  --bg-color: #1a1a1a;
+  --primary-color: #6c4db4;
+  --text-color: #ffffff;
+  --secondary-color: #2e2e2e;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Flex layout básico para manter o footer no final */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Espaço para conteúdo principal crescer */
+main {
+  flex: 1;
+}
+
+nav {
+  background-color: var(--secondary-color);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* Rodapé fixo na base */
+footer {
+  background-color: var(--secondary-color);
+  text-align: center;
+  padding: 1rem;
+  color: #aaa;
+}
+
+/* Links gerais */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #b88eff;
+}
