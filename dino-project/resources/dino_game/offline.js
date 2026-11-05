@@ -699,10 +699,8 @@ export class Runner {
     );
 
     this.dimensions.WIDTH = this.outerContainerEl.offsetWidth - padding * 2;
-    // Cap at the default playfield width so CSS can scale the stage up
-    // to fill available vertical space without stretching sprites.
-    this.dimensions.WIDTH = Math.min(DEFAULT_WIDTH, this.dimensions.WIDTH);
     if (this.isArcadeMode()) {
+      this.dimensions.WIDTH = Math.min(DEFAULT_WIDTH, this.dimensions.WIDTH);
       if (this.activated) {
         this.setArcadeModeContainerScale();
       }
