@@ -213,10 +213,23 @@ export function applyStaticI18n(root) {
 }
 
 
+const FLAG_SVG = {
+  "en-US":
+    '<svg class="revenge-flag" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="16" fill="#b22234"/><path d="M0 2.46h22M0 5.54h22M0 8.62h22M0 11.69h22M0 14.77h22" stroke="#fff" stroke-width="1.23"/><rect width="8.8" height="8.55" fill="#3c3b6e"/></svg>',
+  "pt-BR":
+    '<svg class="revenge-flag" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="16" fill="#009c3b"/><path d="M11 1.6L20.2 8 11 14.4 1.8 8Z" fill="#ffdf00"/><circle cx="11" cy="8" r="3.2" fill="#002776"/></svg>',
+};
+
+
+
+export function toggleTargetLocale(locale) {
+  return (locale || currentLocale) === "pt-BR" ? "en-US" : "pt-BR";
+}
+
+
 
 export function flagForToggle(locale) {
-  const loc = locale || currentLocale;
-  return loc === "pt-BR" ? "🇺🇸" : "🇧🇷";
+  return FLAG_SVG[toggleTargetLocale(locale)];
 }
 
 
