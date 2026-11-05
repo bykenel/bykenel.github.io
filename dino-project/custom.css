@@ -12,8 +12,14 @@ body {
 }
 
 .trex-game {
-  max-width: 600px;
   width: 100%;
+  max-width: 100%;
+  flex: 1 1 auto;
+  min-height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #f7f7f7;
 }
 
 .trex-game.revenge-game-stage {
@@ -21,7 +27,9 @@ body {
 }
 
 .trex-game .runner-container {
-  transition: all 0.3s;
+  transition: transform 0.15s ease;
+  transform-origin: bottom center;
+  flex-shrink: 0;
 }
 
 .revenge-game-fx {
@@ -35,14 +43,17 @@ body {
 
 .revenge-game-wrap {
   width: 100%;
-  max-width: 640px;
+  max-width: min(1000px, 100%);
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
   position: relative;
+  min-height: 0;
 }
 
 #revenge-hud {
+  flex-shrink: 0;
   width: 100%;
   font-family: var(--revenge-font);
   color: rgb(90, 90, 90);
@@ -433,6 +444,10 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+  .trex-game {
+    background: #000;
+  }
+
   #revenge-hud {
     color: rgb(180, 180, 180);
   }
@@ -530,10 +545,11 @@ h6 {
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 16px;
+  gap: 12px;
   min-height: 100vh;
+  height: 100%;
   box-sizing: border-box;
-  padding: 20px 16px 12px;
+  padding: 16px 16px 10px;
 }
 
 .header {
@@ -541,6 +557,7 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .revenge-footer {
@@ -548,8 +565,8 @@ h6 {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: auto;
-  margin-bottom: 8px;
+  flex-shrink: 0;
+  margin-bottom: 4px;
 }
 
 .revenge-footer-actions {
