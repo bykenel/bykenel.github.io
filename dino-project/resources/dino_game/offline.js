@@ -746,7 +746,7 @@ export class Runner {
       this.tRex.playingIntro = true;
 
       // CSS animation definition — use a local stylesheet (index 0 may be
-      // a cross-origin Google Fonts sheet that throws on insertRule).
+      
       const keyframes =
         `@-webkit-keyframes intro { ` +
         `from { width:${Trex.config.WIDTH}px }` +
@@ -874,7 +874,7 @@ export class Runner {
     this.updatePending = false;
 
     const now = getTimeStamp();
-    // Cap spikes (tab blur / long stalls) so escape/HP systems cannot jump seconds.
+    
     let deltaTime = Math.min(now - (this.time || now), 100);
 
     // Flashing when switching game modes.
@@ -958,7 +958,7 @@ export class Runner {
       if (this.revengeMode) {
         this.updateRevengeFrame(deltaTime, hasObstacles);
       } else {
-        // Classic runner collision / scoring.
+        
         let collision =
           hasObstacles &&
           checkForCollision(this.horizon.obstacles[0], this.tRex);
@@ -1044,7 +1044,7 @@ export class Runner {
       }
     }
 
-    // Keep HUD fresh on the start screen without granting passive bones.
+    
     if (
       this.revengeMode &&
       !this.playing &&
@@ -1147,7 +1147,7 @@ export class Runner {
           if (overlapping && !p.arrived) {
             p.arrived = true;
           }
-          // Paid strike: apply once when iframes allow (retries while arrived).
+          
           if (this.iframeTimer <= 0) {
             this.applyRevengeDamage(
               REVENGE_CONFIG.HAZARDS.meteor.damage,
@@ -1164,7 +1164,7 @@ export class Runner {
       }
     }
 
-    // Escape meter + mild acceleration.
+    
     if (this.activated && !this.playingIntro) {
       const escapeFactor =
         this.hurtEscapeTimer > 0
@@ -1308,7 +1308,7 @@ export class Runner {
     if (this.revengeEnded || this.revengePaused) {
       return;
     }
-    // Allow mining before start to bank bones.
+    
     const amount = this.economy.click();
     if (this.hud) {
       this.hud.showClickFeedback(amount);
@@ -1362,7 +1362,7 @@ export class Runner {
     }
 
     const now = getTimeStamp();
-    // Combo tip: Cacto Grande + Ptero only.
+    
     if (hazardId === 'boulder') {
       this.lastGroundHazardAt = now;
     } else if (
@@ -1411,7 +1411,7 @@ export class Runner {
     this.loadSounds();
     this.setPlayStatus(true);
     
-    // failure cannot leave playingIntro stuck and the world frozen.
+    
     this.activated = true;
     this.playingIntro = false;
     this.revengePaused = false;
@@ -1461,7 +1461,7 @@ export class Runner {
         this.hud.showVictory(stats);
       }
     } else {
-      // Escaped — leave running pose; DOM overlay carries the message.
+      
       this.tRex.update(0, Trex.status.RUNNING);
       if (this.hud) {
         this.hud.showDefeat(stats);

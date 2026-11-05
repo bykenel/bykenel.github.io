@@ -34,7 +34,7 @@ const STRINGS = {
     "hazard.boulder": "Cacto gigante",
     "hazard.meteor": "Meteoro",
     startBlurb:
-      "Não deixe o dinossauro escapar! Colete ossos, coloque obstáculos no caminho e lance meteoros para detê-lo.",
+      "Não deixe o dinossauro escapar! Colete ossos, coloque obstáculos e lance meteoros para detê-lo.",
     start: "Começar",
     restart: "Jogar novamente",
     submit: "Enviar",
@@ -63,7 +63,7 @@ const STRINGS = {
   "en-US": {
     subtitle: "Collect bones and stop the dino!",
     credit: "Inspired by Chromium's T-Rex Runner",
-    ranking: "Leaderboard",
+    ranking: "Ranking",
     rankingNote: "Best times on this browser",
     rankingEmpty: "No times recorded yet.",
     rankingColRank: "#",
@@ -108,7 +108,7 @@ const STRINGS = {
     nickAria: "3-letter nick",
     scoreInvalid: "Enter exactly 3 letters (A–Z).",
     scoreNotBetter: "Your time didn't beat this nick's record.",
-    scoreCreated: "Added to the leaderboard!",
+    scoreCreated: "Added to the ranking!",
     scoreImproved: "New best time!",
     combo: "Combo!",
     langAria: "Switch to Portuguese",
